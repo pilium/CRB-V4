@@ -1,14 +1,21 @@
 <script setup lang="ts">
-const { data: home } = await useAsyncData(() => queryCollection('content').path('/').first())
+const { data } = await useAsyncData(() => queryCollection('index').first())
 
 useSeoMeta({
-  title: home.value?.title,
-  description: home.value?.description
+  title: data.value?.title,
+  description: data.value?.description
 })
+
+const links = data?.value?.links;
 </script>
 
 <template>
-  <ContentRenderer v-if="home" :value="home" />
+  <h1>{{ data?.title }}</h1> 
+  <p>{{ data?.description }}</p>
+  <NuxtLink v-for="link in links" :key="link?.title" :to="link?.to">
+    <h2>{{ link?.title }}</h2>
+    <p>{{ link?.description }}</p>
+  </NuxtLink>
   <NuxtPicture format="avif,webp" src="/nuxt-icon.jpg"/>
   <Icon name="uil:github" />
   <Icon name="my-icon:blind" />
