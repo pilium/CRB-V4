@@ -11,3 +11,9 @@ useSeoMeta({
   <ContentRenderer v-if="home" :value="home" />
   <NuxtPicture format="avif,webp" src="/nuxt-icon.jpg"/>
 </template>
+
+<style>
+body {
+  font-family: 'Exo 2 Thin', sans-serif;
+}
+</style>
