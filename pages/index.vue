@@ -14,6 +14,6 @@ useSeoMeta({
 
 <style>
 body {
-  font-family: 'Exo 2 Thin', sans-serif;
+  font-family: 'Exo 2', sans-serif;
 }
 </style>

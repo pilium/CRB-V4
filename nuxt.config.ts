@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 	},
 	fonts: {
 		families: [
-			{ name: 'Exo 2 Thin', provider: 'google' },
+			{ name: 'Exo 2', provider: 'google' },
 			{ name: 'Literata', provider: 'google' },
 		]
 	},
