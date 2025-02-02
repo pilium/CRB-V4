@@ -1,0 +1,56 @@
+html {
+	// colors
+	--color-main: #156361;
+	--color-bg-body: #f0f1f4;
+	--color-text: #455654;
+	--color-text--bg: #455654;
+	--color-text-helper: #505050;
+	--color-ph: #50505062;
+	--color-hover: #55c8c0;
+	--color-link: #327976;
+	--color-link-hover: #55c8c0;
+	--color-title: #223837;
+	--color-icon: #3e9892;
+	--color-border: #2e8884;
+	--color-error: #d35757;
+	--color-border-light: #cedada;
+	--color-modal: #697188;
+	--color-bg-secondary: #f2f7f7;
+	--color-bg-icon: #3e9892;
+	--color-bg-main: #1a7977;
+	--color-light: #fff;
+	--color-bg-light: #fff;
+	--color-dark: #000;
+	--color-bg-blind: #000;
+
+	// Gradients
+	// --gradient-main: linear-gradient(130.72013189013455deg, var(--color-main) 2.927083333333334%, hsl(183, 55%, 47%) 97.84374999999999%);
+	--gradient-main: linear-gradient(135deg, rgba(85, 189, 195, 1) 49%, rgba(49, 181, 187, 1) 100%);
+
+	// Font
+	--font-size: 16px;
+	--font-size-h1: 2.2rem;
+	--font-size-h2: 1.8rem;
+	--font-size-h3: 1.4rem;
+	--font-size-h4: 1.3rem;
+	--font-size-h5: 1rem;
+	--font-size-h6: var(--font-size);
+	--line-height: 1.5;
+	--font-family--default: "Noto Serif SC", arial, sans-serif;
+	--font-family--system: "MS Sans Serif", sans-serif;
+
+	// border
+	--border-radius: 8px;
+	--isImgShow: block;
+	--letter-spacing: normal;
+}
+
+// Breakpoints
+// $break_xs: 425px;
+// $break_sm: 576px;
+// $break_md: 768px;
+// $break_lg: 992px;
+// $break_xl: 1200px;
+// $break_xll: 1366px;
+// $break_xxxl: 1528px;
+// $font-size: 16;

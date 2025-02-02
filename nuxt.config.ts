@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+	css: ['@/theme/variables.scss', '@/theme/index.scss'],
 	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', '@nuxt/icon'],
 	image: {
 		format: ['webp', 'avif'],
@@ -19,8 +20,10 @@ export default defineNuxtConfig({
 		  },
 		],
 	},
-	hub: {
-		cache: true,
+	content: {
+		preview: {
+		  api: 'https://api.nuxt.studio'
+		}
 	},
 	compatibilityDate: '2024-11-01',
 	devtools: { enabled: true }

@@ -1,0 +1,363 @@
+* {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+
+	&::after,
+	&::before { box-sizing: border-box; }
+}
+
+html {
+	box-sizing: border-box;
+	font-size: var(--font-size);
+
+	&[data-color="inverse"] {
+		--color-main: #fff;
+		--color-text: #fff;
+		--color-text-helper: #fff;
+		--color-title: #fff;
+		--color-link: #fff;
+		--color-link-hover: #fff;
+		--color-border: #fff;
+		--color-border-light: #fff;
+		--color-icon: #fff;
+		--color-modal: #fff;
+		--color-light: #fff;
+		--color-dark: #fff;
+		--color-hover: #fff;
+		--color-bg-body: #000;
+		--color-bg-secondary: #000;
+		--color-bg-icon: #000;
+		--color-bg-main: #000;
+		--color-bg-light: #000;
+		--gradient-main: #000;
+		--color-text--bg: #000;
+		--color-bg-blind: #000;
+	}
+
+	&[data-color="contrast"] {
+		--color-main: #000;
+		--color-text: #000;
+		--color-text-helper: #000;
+		--color-title: #000;
+		--color-link: #000;
+		--color-link-hover: #000;
+		--color-border: #000;
+		--color-border-light: #000;
+		--color-icon: #000;
+		--color-modal: #000;
+		--color-light: #000;
+		--color-dark: #000;
+		--color-hover: #000;
+		--color-bg-body: #fff;
+		--color-bg-secondary: #fff;
+		--color-bg-icon: #fff;
+		--color-bg-main: #fff;
+		--color-bg-light: #fff;
+		--color-text--bg: #fff;
+		--gradient-main: #fff;
+		--color-bg-blind: #fff;
+	}
+
+	&[data-color="comfort"] {
+		--color-main: #734d39;
+		--color-text: #734d39;
+		--color-text-helper: #734d39;
+		--color-title: #734d39;
+		--color-link: #734d39;
+		--color-link-hover: #734d39;
+		--color-border: #734d39;
+		--color-border-light: #734d39;
+		--color-icon: #734d39;
+		--color-hover: #734d39;
+		--color-modal: #734d39;
+		--color-light: #734d39;
+		--color-dark: #734d39;
+		--color-hover: #734d39;
+		--color-bg-body: #e5ded6;
+		--color-bg-secondary: #e5ded6;
+		--color-bg-icon: #e5ded6;
+		--color-bg-main: #e5ded6;
+		--color-text--bg: #e5ded6;
+		--color-bg-light: #e5ded6;
+		--gradient-main: #e5ded6;
+		--color-bg-blind: #e5ded6;
+	}
+
+	&[data-color="blue"] {
+		--color-main: #063462;
+		--color-text: #063462;
+		--color-text-helper: #063462;
+		--color-title: #063462;
+		--color-link: #063462;
+		--color-link-hover: #063462;
+		--color-border: #063462;
+		--color-border-light: #063462;
+		--color-icon: #063462;
+		--color-modal: #063462;
+		--color-light: #063462;
+		--color-dark: #063462;
+		--color-hover: #063462;
+		--color-bg-body: #9dd1ff;
+		--color-bg-secondary: #9dd1ff;
+		--color-bg-icon: #9dd1ff;
+		--color-bg-main: #9dd1ff;
+		--color-text--bg: #9dd1ff;
+		--color-bg-light: #9dd1ff;
+		--gradient-main: #9dd1ff;
+		--color-bg-blind: #9dd1ff;
+	}
+
+	&[data-color="brown"] {
+		--color-main: #a9e44d;
+		--color-text: #a9e44d;
+		--color-text-helper: #a9e44d;
+		--color-title: #a9e44d;
+		--color-link: #a9e44d;
+		--color-link-hover: #a9e44d;
+		--color-border: #a9e44d;
+		--color-border-light: #a9e44d;
+		--color-icon: #a9e44d;
+		--color-modal: #a9e44d;
+		--color-light: #a9e44d;
+		--color-dark: #a9e44d;
+		--color-hover: #a9e44d;
+		--color-bg-body: #3b2716;
+		--color-bg-secondary: #3b2716;
+		--color-bg-icon: #3b2716;
+		--color-bg-main: #3b2716;
+		--color-text--bg: #3b2716;
+		--color-bg-light: #3b2716;
+		--gradient-main: #3b2716;
+		--color-bg-blind: #3b2716;
+	}
+
+	&[data-ls="middle"] { --letter-spacing: 2px; }
+	&[data-ls="big"] { --letter-spacing: 3px; }
+
+	&[data-img="off"] {
+		img { display: none !important; }
+		.icon:not(.blind-toggle__icon):not(.blind__icon) { display: none !important; }
+	}
+
+	&[data-img="gray"] {
+		img {
+			display: block !important;
+			filter: grayscale(1) !important;
+		}
+
+		.icon { fill: #808080 !important; }
+	}
+
+	&[data-font="serif"] {
+		--font-family--default: serif;
+	}
+
+	&[data-fz="small"] { --font-size: 14px; }
+	&[data-fz="big"] { --font-size: 18px; }
+}
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: var(--font-family--default);
+	letter-spacing: var(--letter-spacing);
+	color: var(--color-text);
+	background-color: var(--color-bg-light);
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	text-size-adjust: 100%;
+
+	&.fixed { overflow: hidden; }
+
+	&.inner {
+		.header { background-color: var(--color-bg-body); }
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	padding: 0;
+	line-height: 1.4;
+	color: currentColor;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0 8px;
+
+	&--header {
+		@media screen and (min-width: 992px) {
+			padding-right: 0;
+			padding-left: 0;
+		}
+	}
+
+	@media screen and (min-width: 425px) { max-width: 100%; }
+
+	@media screen and (min-width: 768px) { max-width: 736px; }
+
+	@media screen and (min-width: 992px) { max-width: 1200px; }
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+// Коррекция для кликабельных элементов с указанной ролью в iOS
+[role="button"] {
+	cursor: pointer;
+}
+
+// Мы любим Сафари.
+[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+// area,
+// summary,
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+textarea {
+	margin: 0;                  // Убираем margin в Firefox и Safari
+	touch-action: manipulation; // Стилевая коррекция 300ms задержки (для поддерживающих браузеров)
+}
+
+button,
+input {
+	overflow: visible;    // Покажем торчащее в Edge
+	text-transform: none; // Уберём наследование text transform в Firefox
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button; // Коррекция проблем стилизации для Safari
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+	-webkit-appearance: listbox; // Коррекция для Mobile Safari (https://github.com/twbs/bootstrap/issues/11266)
+}
+
+textarea {
+	overflow: auto;   // Удаление верт. скролла в IE.
+	resize: vertical; // Правильное изменение размеров
+}
+
+svg {
+	&:not(:root) {
+		overflow: hidden; // Скрыть выступающее за границы в IE
+	}
+
+	a &,
+	button & {
+		pointer-events: none; // Мы любим Edge, это браузер! (почти)
+	}
+}
+
+a {
+	text-decoration: none;
+	background-color: transparent;
+	cursor: pointer;
+	transition: color 0.3s;
+
+	&[href^="tel:"] {
+		@media (min-width: 1200px) {
+			white-space: nowrap;
+			text-decoration: inherit;
+			cursor: pointer;
+		}
+	}
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+h6 { font-size: var(--font-size-h6); }
+
+p,
+ol,
+dl,
+table,
+blockquote,
+pre,
+address {
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+figure {
+	position: relative;
+	margin: 0;
+}
+
+address {
+	font-family: var(--font-family--default);
+	font-style: normal;
+}
+
+ul,
+ol {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+li {
+	line-height: inherit;
+}
+
+dl {
+	margin: 0;
+}
+
+dd {
+	margin-left: 0;
+}
+
+::-webkit-scrollbar { /* 1 - скроллбар */
+	width: 4px;
+	height: 4px;
+}
+
+::-webkit-scrollbar-button { /* 2 - кнопка */
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-track { /* 3 - трек */
+	background-color: #fff;
+}
+
+::-webkit-scrollbar-track-piece { /* 4 - видимая часть трека */
+	background-color: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb { /* 5 - ползунок */
+	border-radius: 8px;
+	background-color: var(--color-main);
+}
