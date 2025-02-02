@@ -18,7 +18,10 @@ export default defineNuxtConfig({
 			dir: './assets/icons'
 		  },
 		],
-	  },
+	},
+	hub: {
+		cache: true,
+	},
 	compatibilityDate: '2024-11-01',
 	devtools: { enabled: true }
 })
