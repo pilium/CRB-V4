@@ -10,6 +10,8 @@ useSeoMeta({
 <template>
   <ContentRenderer v-if="home" :value="home" />
   <NuxtPicture format="avif,webp" src="/nuxt-icon.jpg"/>
+  <Icon name="uil:github" />
+  <Icon name="my-icon:blind" />
 </template>
 
 <style>
