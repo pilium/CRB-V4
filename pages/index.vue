@@ -2,27 +2,23 @@
 const { data } = await useAsyncData(() => queryCollection('index').first())
 
 useSeoMeta({
-  title: data.value?.title,
-  description: data.value?.description
+	title: data.value?.title,
+	description: data.value?.description
 })
-
-const links = data?.value?.links;
 </script>
 
-<template>
-  <h1>{{ data?.title }}</h1> 
-  <p>{{ data?.description }}</p>
-  <NuxtLink v-for="link in links" :key="link?.title" :to="link?.to">
-    <h2>{{ link?.title }}</h2>
-    <p>{{ link?.description }}</p>
-  </NuxtLink>
-  <NuxtPicture format="avif,webp" src="/nuxt-icon.jpg"/>
-  <Icon name="uil:github" />
-  <Icon name="my-icon:blind" />
+<template lang="pug">
+main.main#content
+	<SectionsPos/>
+	<SectionsHero/>
+	.container
+		.h-links
+			a.link.link--underline(href="https://www.donland.ru/activity/2787/" target="_blank") Поддержка бизнеса в условиях санкций
+	<SectionsQuickLinks/>
 </template>
 
 <style>
 body {
-  font-family: 'Exo 2', sans-serif;
+	font-family: 'Exo 2', sans-serif;
 }
 </style>
