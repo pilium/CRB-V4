@@ -8,7 +8,7 @@ zapis:
 Gosuslugi:
   label: Запись через госуслуги
   to: https://www.gosuslugi.ru/
-links: 
+links:
   - icon: 'calendar'
     title: 'График приема'
     descr: 'станица Романовская, хутор Рябичев'
