@@ -1,0 +1,2 @@
+ZIP truncated. Processed 5 out of 7 files.
+ZIP containing all files must be less than the raw file size limit for your cloud (dhccuflos) which is 100 MB.
