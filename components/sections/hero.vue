@@ -11,8 +11,8 @@
 					.hero__info
 						h1.hero__title {{ data?.title }}
 						.hero__btns
-							a.btn.btn--border(href="https://zapisnapriemrostov.ru/?_lpu=75850063@mis_bars" rel="noopener noreferrer" target="blanc") Записаться на прием
-							a.btn.btn--border(href="https://www.gosuslugi.ru/category/health" rel="noopener noreferrer" target="blanc") Запись через гос услуги
+							a.btn.btn--border(:href="data?.zapis?.to" target="blanc") {{  data?.zapis?.label2 }}
+							a.btn.btn--border(:href="data?.Gosuslugi?.to" rel="noopener noreferrer" target="blanc") {{ data?.Gosuslugi?.label }}
 </template>
 <style lang="scss" scoped>
 	.hero {
