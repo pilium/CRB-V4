@@ -89,7 +89,7 @@
 .h-links {
 	display: flex;
 	margin: 24px 0;
-	
+
 	.link {
 		margin: auto;
 	}
@@ -182,6 +182,10 @@
 	&:focus {
 		outline: 1px solid var(--color-dark);
 		outline-offset: 2px;
+	}
+
+	&:hover {
+		outline: 1px solid var(--color-link-hover);
 	}
 
 	&--write-us {
@@ -282,7 +286,7 @@
 
 	&--bg-tr { background-color: transparent; }
 	&--pd2 { padding: 8px 16px; }
-	&--bg-main { background: var(--color-main); }
+	&--bg-main { background: var(--color-link-hover); }
 	&--full { width: 100%; }
 	&--no-flex { display: block; }
 
