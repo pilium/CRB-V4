@@ -1,7 +1,5 @@
 <script setup lang="ts">
 	const { data } = await useAsyncData(() => queryCollection('index').first())
-	console.log(data.value);
-
 </script>
 <template lang="pug">
 	section.section.section--hero.flc
@@ -11,7 +9,7 @@
 					.hero__info
 						h1.hero__title {{ data?.title }}
 						.hero__btns
-							a.btn.btn--border(:href="data?.zapis?.to" target="blanc") {{  data?.zapis?.label2 }}
+							a.btn.btn--border(:href="data?.zapis?.to" target="blanc") {{  data?.zapis?.label }}
 							a.btn.btn--border(:href="data?.Gosuslugi?.to" rel="noopener noreferrer" target="blanc") {{ data?.Gosuslugi?.label }}
 </template>
 <style lang="scss" scoped>
