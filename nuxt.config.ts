@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	css: ['@/theme/variables.scss', '@/theme/index.scss'],
-	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', '@nuxt/icon'],
+	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', '@nuxt/icon', "@nuxt/scripts"],
 	image: {
 		format: ['webp', 'avif'],
 		densities: [1, 2],
@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 		]
 	},
 	icon: {
+		mode: 'svg', // default <Icon> mode applied
 		customCollections: [
 		  {
 			prefix: 'my-icon',
