@@ -98,7 +98,7 @@
 
 			span { color: var(--color-link-hover);}
 
-			@media screen and (min-width: 992px) { font-size: 1.6rem; }
+			@media screen and (min-width: 992px) { font-size: 1.4rem; }
 		}
 
 		&__links {
