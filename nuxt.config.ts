@@ -21,6 +21,14 @@ export default defineNuxtConfig({
 		  },
 		],
 	},
+	nitro: {
+	    prerender: {
+	      routes: [
+	        '/'
+	      ],
+	      crawlLinks: true
+	    }
+	  },
 	content: {
 		preview: {
 		  api: 'https://api.nuxt.studio'
