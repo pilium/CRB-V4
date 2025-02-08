@@ -1,5 +1,5 @@
 title: Государственное бюджетное учреждение Ростовской области Центральная районная больница в Волгодонском районе
-address: Ст.Романовская, пер.Союзный 97а
+address: Ст. Романовская, пер. Союзный 97а
 seo: ГБУ РО "ЦРБ" в Волгодонском районе
 description: Сайт ЦРБ Волгодонского района
 hero:
@@ -13,35 +13,35 @@ Gosuslugi:
   label: Запись через госуслуги
   to: https://www.gosuslugi.ru/
 links:
-  - icon: 'calendar'
-    title: 'График приема'
-    descr: 'станица Романовская, хутор Рябичев'
-    to: '/patient/schedule'
-  - icon: 'doctor'
-    title: 'Услуги'
-    descr: 'Виды медицинской помощи'
-    to: '/patient/helpOrder'
-  - icon: 'testimonial'
-    title: 'Отзывы'
-    descr: 'Отзывы пациентов о работе больницы'
-    to: '/hospital/testimonials'
-  - icon: 'health'
-    title: 'Диспансеризация'
-    descr: 'Информация по диспансеризации в больнице'
-    to: '/patient/dispans'
-  - icon: 'medical-insurance'
-    title: 'Страховые компании'
-    descr: 'Информация о страховых компаниях ростовской области'
-    to: '/patient/smo'
-  - icon: 'article'
-    title: 'Полезные статьи'
-    descr: 'Большое количество статей на тему здоровья'
-    to: '/hospital/news'
-  - icon: 'gallery'
-    title: 'Галерея'
-    descr: 'Фотографии больницы, врачей, кабинетов'
-    to: '/hospital/gallery'
-  - icon: 'payment'
-    title: 'Платные услуги'
-    descr: 'Информация с список платных услуг больницы'
-    to: '/hospital/payment'
+  - icon: calendar
+    title: График приема
+    descr: станица Романовская, хутор Рябичев
+    to: /patient/schedule
+  - icon: doctor
+    title: Услуги
+    descr: Виды медицинской помощи
+    to: /patient/helpOrder
+  - icon: testimonial
+    title: Отзывы
+    descr: Отзывы пациентов о работе больницы
+    to: /hospital/testimonials
+  - icon: health
+    title: Диспансеризация
+    descr: Информация по диспансеризации в больнице
+    to: /patient/dispans
+  - icon: medical-insurance
+    title: Страховые компании
+    descr: Информация о страховых компаниях ростовской области
+    to: /patient/smo
+  - icon: article
+    title: Полезные статьи
+    descr: Большое количество статей на тему здоровья
+    to: /hospital/news
+  - icon: gallery
+    title: Галерея
+    descr: Фотографии больницы, врачей, кабинетов
+    to: /hospital/gallery
+  - icon: payment
+    title: Платные услуги
+    descr: Информация с список платных услуг больницы
+    to: /hospital/payment
