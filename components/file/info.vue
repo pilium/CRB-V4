@@ -7,7 +7,7 @@
 			span.file-info__title Формат:
 			span {{ format() }}
 		span.file-info__title Чем открыть:
-		fileOpen(:dataFormat="fileData")
+		fileOpen(:dataFormat="fileData.format")
 </template>
 
 <script setup>

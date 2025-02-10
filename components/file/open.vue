@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue"
+
 const props = defineProps({
 	dataFormat: {
 		type: String,
@@ -12,14 +12,12 @@ const props = defineProps({
 		},
 	},
 });
-console.log(props.dataFormat);
 
-
-const openProgs = ref('');
+let openProgs = '';
 
 switch (props.dataFormat) {
 	case 'pdf':
-		openProgs.value = `
+		openProgs = `
 			<ul class="file-open__list fw fl">
 				<li class="file-open__item">
 					<a class="link link--underline" href="https://browser.yandex.ru/">Яндекс Браузер
@@ -40,7 +38,7 @@ switch (props.dataFormat) {
 	case 'doc':
 	case 'docx':
 	case 'rtf':
-		openProgs.value = `
+		openProgs = `
 			<ul class="file-open__list fw fl">
 				<li class="file-open__item">
 						<a class="link link--underline" href="https://products.office.com/ru-ru/word">Microsoft Word</a>
@@ -58,7 +56,7 @@ switch (props.dataFormat) {
 		`;
 		break;
 	case 'jpg':
-		openProgs.value = `
+		openProgs = `
 			<ul class="file-open__list fw fl">
 				<li class="file-open__item">
 					<a class="link link--underline" href="https://browser.yandex.ru/">Яндекс Браузер
@@ -78,7 +76,7 @@ switch (props.dataFormat) {
 		break;
 	case 'xls':
 	case 'xlsx':
-		openProgs.value = `
+		openProgs = `
 			<ul class="file-open__list fw fl">
 				<li class="file-open__item">
 					<a class="link link--underline" href="https://products.office.com/ru-ru/excel?SilentAuth=1&wa=wsignin1.0">Microsoft Excel</a>
@@ -97,7 +95,7 @@ switch (props.dataFormat) {
 		break;
 	case 'zip':
 	case 'rar':
-		openProgs.value = `
+		openProgs = `
 			<ul class="file-open__list fw fl">
 				<li class="file-open__item">
 					<a class="link link--underline" href="https://www.win-rar.com/start.html?&L=4">WinRar</a>
@@ -115,7 +113,7 @@ switch (props.dataFormat) {
 		`;
 		break;
 	default:
-		openProgs.value = 'Программы для данного типа файла не определены';
+		openProgs = 'Программы для данного типа файла не определены';
 		break;
 }
 

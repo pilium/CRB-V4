@@ -13,6 +13,96 @@ const TOCData = [
 	{title: 'Документы', anchor: '#docs'},
 ]
 const fileData = {
+	first1: {
+		title: 'Федеральный закон  от 25.12.2008 N 273-ФЗ "О противодействии коррупции"',
+		size: '279 kб',
+		icon: 'rtf',
+		href: '/media/files/yur/law_273.rtf',
+		pages: '48',
+		date: '08.08.2024г.',
+		format: 'rtf',
+	},
+	first2: {
+		title: 'План мероприятий по противодействия коррупции 2021-2024',
+		size: '13 kб',
+		icon: 'docx',
+		href: '/media/files/yur/plan.docx',
+		pages: '4',
+		date: '14.12.2020г.',
+		format: 'docx',
+	},
+	first3: {
+		title: 'Уведомление работодателя о факте обращения в целях склонения работника к совершению коррупционных правонарушений',
+		size: '16 kб',
+		icon: 'docx',
+		href: '/media/files/yur/note_1.docx',
+		pages: '1',
+		date: '14.12.2020г.',
+		format: 'docx',
+	},
+	second1: {
+		title: 'Федеральный закон от 21.11.2011 N 323-ФЗ Об основах охраны здоровья граждан в РФ',
+		size: '261 kб',
+		icon: 'docx',
+		href: '/media/files/yur/law_323.docx',
+		pages: '142',
+		date: '09.11.2011г.',
+		format: 'docx',
+	},
+	second2: {
+		title: 'Отчет по плану мероприятий 2022',
+		size: '55 kб',
+		icon: 'doc',
+		href: '/media/files/yur/report_2022.doc',
+		pages: '7',
+		date: '19.02.2023г.',
+		format: 'doc',
+	},
+	second3: {
+		title: 'Уведомление о возникновении личной заинтересованности при исполнении должностных обязанностей',
+		size: '16 kб',
+		icon: 'docx',
+		href: '/media/files/yur/note_2.docx',
+		pages: '1',
+		date: '19.02.2023г.',
+		format: 'doc',
+	},
+	third1: {
+		title: 'Областной закон Ростовской области от 12.05.2009 N 218-ЗС "О противодействии коррупции в Ростовской области"',
+		size: '219 kб',
+		icon: 'doc',
+		href: '/media/files/yur/law_.doc',
+		pages: '30',
+		date: '23.04.2009г.',
+		format: 'doc',
+	},
+	third2: {
+		title: 'Отчет по плану мероприятий 2023',
+		size: '55 kб',
+		icon: 'doc',
+		href: '/media/files/yur/report_2023.doc',
+		pages: '7',
+		date: '19.02.2024г.',
+		format: 'doc',
+	},
+	third3: {
+		title: 'Уведомление о факте коррупции',
+		size: '8 kб',
+		icon: 'docx',
+		href: '/media/files/yur/note_3.docx',
+		pages: '1',
+		date: '19.02.2023г.',
+		format: 'doc',
+	},
+	fourth1: {
+		title: 'Постановление Правительства РО от 26.02.2013 N 92 О представлении лицом, поступающим на должность руководителя',
+		size: '88 kб',
+		icon: 'docx',
+		href: '/media/files/yur/post_92.docx',
+		pages: '22',
+		date: '09.11.2011г.',
+		format: 'docx',
+	},
 	first: {
 		title: 'Приказ "Об утверждении Кодекса этики и служебного поведения (деонтологии) работников ГБУ РО ЦРБ в Волгодонском районе"',
 		size: '16.2 мб',
@@ -23,12 +113,12 @@ const fileData = {
 		format: 'pdf',
 	},
 	second: {
-		title: 'Об утверждении Плана противодействия коррупции в ГБУ РО ЦРБ в Волгодонском районе',
-		size: '2.83 мб',
+		title: 'Приказ 446 от 30.12.2022 Об утверждении положения о комиссии по соблюдению требований к служебному поведению',
+		size: '4.95 мб',
 		icon: 'pdf',
-		href: '/media/files/yur/prikaz_430.pdf',
-		pages: '5',
-		date: '11.01.2023г.',
+		href: '/media/files/yur/prikaz_446.pdf',
+		pages: '7',
+		date: '30.12.2022г.',
 		format: 'pdf',
 	},
 	third: {
@@ -76,6 +166,51 @@ const fileData = {
 		date: '11.01.2023г.',
 		format: 'pdf',
 	},
+	eighth: {
+		title: 'Обзор судебной практики за 1 полугодие 2022',
+		size: '249 кб',
+		icon: 'pdf',
+		href: '/media/files/yur/yur_1.pdf',
+		pages: '49',
+		date: '11.01.2023г.',
+		format: 'pdf',
+	},
+	ninth: {
+		title: 'Обзор судебной практики за 2 полугодие 2022',
+		size: '319 кб',
+		icon: 'pdf',
+		href: '/media/files/yur/yur_2.pdf',
+		pages: '68',
+		date: '11.01.2023г.',
+		format: 'pdf',
+	},
+	twelve: {
+		title: 'О необходимости соблюдения положений антикоррупционного законодательства, содержащих запрет на дарение подарков',
+		size: '16 kб',
+		icon: 'docx',
+		href: '/media/files/gift.docx',
+		pages: '1',
+		date: '23.12.2024г.',
+		format: 'docx',
+	},
+	thirteen: {
+		title: 'Отчет о реализации плана мероприятий по противодействию коррупции на 2021-2024 годы',
+		size: '56 kб',
+		icon: 'doc',
+		href: '/media/files/2024.doc',
+		pages: '7',
+		date: '15.01.2025г.',
+		format: 'doc',
+	},
+	thirteen1: {
+		title: 'Об утверждении плана мероприятий по противодействию коррупции в ГБУ РО ЦРБ в Волгодонском районе на 2025-2026 года>',
+		size: '2.1 мб',
+		icon: 'pdf',
+		href: '/media/files/plan_cor.pdf',
+		pages: '4',
+		date: '15.01.2025г.',
+		format: 'pdf',
+	}
 }
 
 </script>
@@ -224,6 +359,10 @@ const fileData = {
 									Icon(name="my-icon:external-link" class="article__link-img" title="Новости")
 							commonFiles
 								template(v-slot:file)
+									fileMain(:fileData="fileData.first1")
+									fileMain(:fileData="fileData.second1")
+									fileMain(:fileData="fileData.third1")
+									fileMain(:fileData="fileData.fourth1")
 									fileMain(:fileData="fileData.first")
 									fileMain(:fileData="fileData.second")
 									fileMain(:fileData="fileData.third")
@@ -231,4 +370,9 @@ const fileData = {
 									fileMain(:fileData="fileData.fifth")
 									fileMain(:fileData="fileData.sixth")
 									fileMain(:fileData="fileData.seventh")
+									fileMain(:fileData="fileData.eighth")
+									fileMain(:fileData="fileData.ninth")
+									fileMain(:fileData="fileData.twelve")
+									fileMain(:fileData="fileData.thirteen")
+									fileMain(:fileData="fileData.thirteen1")
 </template>
