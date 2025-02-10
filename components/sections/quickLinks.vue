@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	const { data } = await useAsyncData(() => queryCollection('index').first())
-	const links = data?.value?.meta?.links;
+	const links = data?.value?.links;
 </script>
 <template lang="pug">
 	.section.section--quick-links
@@ -35,7 +35,7 @@
 				border-bottom: none;
 			}
 
-			@media screen and (min-width: 768px) {
+			@media (min-width: 768px) {
 				flex-direction: column;
 				margin-bottom: 0;
 				padding: 24px 40px;
@@ -52,7 +52,7 @@
 				}
 			}
 
-			@media screen and (min-width: 1200px) {
+			@media (min-width: 1200px) {
 				width: 25%;
 
 				&:nth-child(5),
@@ -74,29 +74,29 @@
 				&:not(:last-child) {
 					margin-right: 16px;
 
-					@media screen and (min-width: 768px) { margin-right: 0; }
+					@media (min-width: 768px) { margin-right: 0; }
 				}
 			}
 
-			@media screen and (min-width: 768px) { display: block; }
+			@media (min-width: 768px) { display: block; }
 		}
 
 		&__title {
 			margin: 0 auto;
 			color: var(--color-title);
 
-			@media screen and (min-width: 768px) { margin-bottom: 24px; }
+			@media (min-width: 768px) { margin-bottom: 24px; }
 		}
 
 		&__descr {
 			font-size: 0.87rem;
 			color: var(--color-text);
 
-			@media screen and (min-width: 768px) { font-size: 1rem; }
+			@media (min-width: 768px) { font-size: 1rem; }
 		}
 
 		&__icon {
-			@media screen and (min-width: 768px) { margin-bottom: 24px; }
+			@media (min-width: 768px) { margin-bottom: 24px; }
 		}
 
 		&__svg-icon {
@@ -104,7 +104,7 @@
 			height: 40px;
 			fill: var(--color-icon);
 
-			@media screen and (min-width: 768px) {
+			@media  (min-width: 768px) {
 				width: 72px;
 				height: 72px;
 			}

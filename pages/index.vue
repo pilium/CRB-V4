@@ -10,12 +10,14 @@ useSeoMeta({
 <template lang="pug">
 main.main#content
 	//- <SectionsPos/>
-	<SectionsHero/>
 	.container
 		.h-links
 			a.link.link--underline(href="https://www.donland.ru/activity/2787/" target="_blank") Поддержка бизнеса в условиях санкций
-	<SectionsQuickLinks/>
+	<SectionsHero/>
 	<SectionsContacts/>
+	<SectionsBanner/>
+	<SectionsQuickLinks/>
+	<SectionsInformer/>
 </template>
 
 <style>

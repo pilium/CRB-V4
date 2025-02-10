@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	css: ['@/theme/variables.scss', '@/theme/index.scss'],
-	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', '@nuxt/icon', "@nuxt/scripts"],
-	image: {
+	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', '@nuxt/icon', "@nuxt/scripts", "@nuxt/eslint"],
+		image: {
 		format: ['webp', 'avif'],
 		densities: [1, 2],
 	},

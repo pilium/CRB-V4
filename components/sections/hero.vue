@@ -1,6 +1,6 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <script setup lang="ts">
 	const { data } = await useAsyncData(() => queryCollection('index').first())
-	console.log(data.value)
 </script>
 <template lang="pug">
 	section.section.section--hero.flc
