@@ -1,7 +1,6 @@
 <template>
   <div>
-	<NuxtLayout>
-	</NuxtLayout>
+	<NuxtLayout/>
   </div>
 </template>
 <script setup lang="ts">
