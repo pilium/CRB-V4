@@ -100,6 +100,7 @@
 		}
 
 		&__svg-icon {
+			display: inline;
 			width: 40px;
 			height: 40px;
 			fill: var(--color-icon);
