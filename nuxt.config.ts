@@ -1,7 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+	ui: {
+		primary: 'green',
+		gray: 'cool'
+	},
 	css: ['@/theme/variables.scss', '@/theme/index.scss'],
-	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', '@nuxt/icon', "@nuxt/scripts", "@nuxt/eslint"],
+	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', "@nuxt/scripts", "@nuxt/eslint", '@nuxt/ui'],
 		image: {
 		format: ['webp', 'avif'],
 		densities: [1, 2],
