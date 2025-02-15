@@ -352,8 +352,6 @@
 									figcaption(style="margin: 0 0 3em")
 										| Пролфилактика вирусных
 										| инфекции
-								.article__img
-									img(src="/Articles/orvi1.jpg", alt="orvi")
 </template>
 
 <script setup>
