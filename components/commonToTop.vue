@@ -1,6 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-unused-expressions -->
-<!-- <script setup>
-(function () {
+<script setup>
+onMounted(() => {
+	(function () {
 	const showButton = 600;
 
 	const scrollSpeed = 1000;
@@ -35,8 +36,9 @@
 			scrollTop(scrollSpeed);
 		};
 	}
-})(); -->
-<!-- </script> -->
+})();
+})
+</script>
 <template lang="pug">
 	button.btn.scrollToTop#scrollToTop
 		svg(xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24")
