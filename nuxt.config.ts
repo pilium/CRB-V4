@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 		primary: 'green',
 		gray: 'cool'
 	},
-	css: ['@/theme/variables.scss', '@/theme/index.scss'],
+	css: ['@/theme/ui.css', '@/theme/variables.scss', '@/theme/index.scss'],
 	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', "@nuxt/scripts", "@nuxt/eslint", '@nuxt/ui'],
 		image: {
 		format: ['webp', 'avif'],
