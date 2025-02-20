@@ -19,11 +19,10 @@
 </template>
 
 <script setup>
-const labels = {
-	last: 'Отзывы пациентов',
-}
+const { data: reviews } = await useAsyncData('reviews', () => queryCollection('reviews').all())
 
-let reviews = await useFetch('https://xn----8sbbffg6bfugcbry7d4i.xn--p1ai/data/reviews.json');
+
+// let reviews = await useFetch('https://xn----8sbbffg6bfugcbry7d4i.xn--p1ai/data/reviews.json');
 
 function timeNormalize(value) {
 	if (!value) {
@@ -35,6 +34,9 @@ function timeNormalize(value) {
 		month: 'long',
 		year: 'numeric',
 	});
+}
+const labels = {
+	last: 'Отзывы пациентов',
 }
 
 useSeoMeta({

@@ -6,6 +6,10 @@ export default defineContentConfig({
       type: 'page',
       source: 'articles/**/*.md'
     }),
+	reviews: defineCollection({
+		source: 'reviews/*.md',
+		type: 'page',
+	}),
     index: defineCollection({
       type: 'data',
       source: 'pages/**/*.yml',
