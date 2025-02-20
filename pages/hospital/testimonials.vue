@@ -8,19 +8,21 @@
 				template(v-slot:text)
 					.article__text
 						.container
-							ul.testimonials(v-for="(item, key) in reviews" :key="key")
+							ul.testimonials(v-for="item in data" :key="item.id")
 								li
 									blockquote.testimonials__block
-										p(v-html="item.text")
+										p {{ item.description }}
 										footer
 											cite.testimonials__cite
 												span.testimonials__name {{ item.name }}
-												span.testimonials__date {{ new Date(item.date)  | timeNormalize() }}
+												span.testimonials__date {{ timeNormalize(item.meta.date) }}
 </template>
 
 <script setup>
-const { data: reviews } = await useAsyncData('reviews', () => queryCollection('reviews').all())
+const { data } = await useAsyncData('reviews', () => queryCollection('reviews').all())
 
+
+console.log(data.value);
 
 // let reviews = await useFetch('https://xn----8sbbffg6bfugcbry7d4i.xn--p1ai/data/reviews.json');
 
