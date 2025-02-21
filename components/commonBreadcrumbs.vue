@@ -3,7 +3,7 @@
 		.container
 			ol.breadcrumbs__list.flc(itemscope itemtype="http://schema.org/BreadcrumbList")
 				li.breadcrumbs__list-item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
-					nuxt-link.breadcrumbs__home(to="/" itemprop="item" href="https://xn----8sbbffg6bfugcbry7d4i.xn--p1ai/")
+					nuxt-link.breadcrumbs__home(itemprop="item" to="https://xn----8sbbffg6bfugcbry7d4i.xn--p1ai/")
 						span(itemprop="name") Главная
 						<meta itemprop="position" content="1" />
 					span.breadcrumbs__separator &gt;
