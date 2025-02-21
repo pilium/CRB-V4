@@ -4,7 +4,7 @@
 		main.main#content
 			commonArticle
 				template(v-slot:title)
-					h1.article__title График приема врачей
+					h1.article__title {{ schedules.title }}
 				template(v-slot:text)
 					.article__text
 						UTabs(:items="items" variant="link" class="gap-4 w-full" :ui="{ trigger: 'flex-1' }")
@@ -89,8 +89,6 @@
 <script setup>
 const { data: schedules } = await useAsyncData(() => queryCollection('schedule').first())
 
-console.log(schedules.value);
-
 const items = [
   {
     label: 'ст.Романовская',
@@ -102,11 +100,11 @@ const items = [
   }
 ]
 const tableData = {
-	caption: 'Расписание работы врачей в ст.Романовская',
+	caption: schedules.value.subtitle1,
 	tableClass: 'table--schedule',
 }
 const tableData1 = {
-	caption: 'Расписание работы врачей в х.Рябичи',
+	caption: schedules.value.subtitle2,
 	tableClass: 'table--schedule',
 }
 const days = []
