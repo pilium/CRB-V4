@@ -24,7 +24,8 @@ defineProps({
 
 			&:hover,
 			&:focus,
-			&.nuxt-link-active {
+			&.nuxt-link-active,
+			&.router-link-active {
 				border-color: var(--color-border);
 				transition: border-color linear 0.3s, padding-left linear 0.3s;
 
