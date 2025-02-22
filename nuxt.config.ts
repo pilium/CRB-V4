@@ -1,14 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	ui: {
-		primary: 'green',
-		gray: 'cool'
-	},
 	css: ['@/theme/ui.css', '@/theme/variables.scss', '@/theme/index.scss'],
 	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', "@nuxt/scripts", "@nuxt/eslint", '@nuxt/ui'],
-		image: {
-		format: ['webp', 'avif'],
-		densities: [1, 2],
+	image: {
+			format: ['webp', 'avif'],
+			densities: [1, 2],
 	},
 	fonts: {
 		families: [
@@ -19,23 +15,23 @@ export default defineNuxtConfig({
 	icon: {
 		mode: 'svg', // default <Icon> mode applied
 		customCollections: [
-		  {
-			prefix: 'my-icon',
-			dir: './assets/icons'
-		  },
+			{
+					prefix: 'my-icon',
+					dir: './assets/icons'
+			},
 		],
 	},
 	nitro: {
-	    prerender: {
-	      routes: [
-	        '/'
-	      ],
-	      crawlLinks: true
-	    }
-	  },
+		prerender: {
+			routes: [
+				'/'
+			],
+			crawlLinks: true
+		}
+	},
 	content: {
 		preview: {
-		  api: 'https://api.nuxt.studio'
+			api: 'https://api.nuxt.studio'
 		}
 	},
 	compatibilityDate: '2024-11-01',
