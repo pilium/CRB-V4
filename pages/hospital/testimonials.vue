@@ -21,11 +21,6 @@
 <script setup>
 const { data } = await useAsyncData('reviews', () => queryCollection('reviews').all())
 
-
-console.log(data.value);
-
-// let reviews = await useFetch('https://xn----8sbbffg6bfugcbry7d4i.xn--p1ai/data/reviews.json');
-
 function timeNormalize(value) {
 	if (!value) {
 		return '';
