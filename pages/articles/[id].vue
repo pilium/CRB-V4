@@ -4,7 +4,6 @@ const { data: page } = await useAsyncData(route.path, () => {
   return queryCollection('articles').path(route.path).first()
 })
 
-console.log(page.value.toc);
 const labels = {
 	last: page.value.title,
 }
