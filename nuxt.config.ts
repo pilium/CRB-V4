@@ -7,10 +7,9 @@ export default defineNuxtConfig({
 			densities: [1, 2],
 	},
 	fonts: {
-		families: [
-			{ name: 'Exo 2', provider: 'google' },
-			{ name: 'Literata', provider: 'google' },
-		]
+		experimental: {
+			processCSSVariables: true,
+		},
 	},
 	icon: {
 		mode: 'svg', // default <Icon> mode applied
