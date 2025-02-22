@@ -7,12 +7,15 @@
 					h1.article__title Последние новости
 					.articles__wrapper.fl.fw
 						template(v-for="(item) in news")
-							<sectionsPosts :posts="item"/>
+							<sectionsPosts :posts="item" :full="true"/>
 </template>
 
 <script setup>
 
 const { data: news } = await useAsyncData('articles', () => queryCollection('articles').all())
+
+console.log(news.value);
+
 
 const labels = {
 	last: 'Новости',

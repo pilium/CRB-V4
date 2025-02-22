@@ -1,8 +1,8 @@
 <template lang="pug">
-	article.posts.posts--full.f.fdc
+	article.posts.f.fdc(:class="{ 'posts--full': full }")
 		header.posts__header
 			<NuxtImg loading="lazy" class="posts__img" :src="posts.meta.img" :alt="posts.meta.alt"/>
-		.posts__content
+		NuxtLink.posts__content(title="Перейти к посту" rel="noopener noreferrer" target="blanc" :to="posts.path")
 			.posts__category.f.fdc
 				.posts__category-info
 					h3.posts__title {{ posts.title }}
@@ -14,7 +14,7 @@
 							<Icon name="my-icon:read-time" class="posts__icon" title="иконка времени чтения"/>
 							span {{ posts.meta.ttr }} мин
 					p.posts__excert {{ posts.meta.descr }}
-		button.btn.btn--pill(title="Перейти к посту" rel="noopener noreferrer" target="blanc") Перейти к статье
+		NuxtLink.btn.btn--pill(title="Перейти к посту" rel="noopener noreferrer" target="blanc" :to="posts.path") Перейти к статье
 </template>
 
 <script setup>
@@ -25,7 +25,13 @@ const props = defineProps({
 		default() {
 			return {};
 		},
-  },
+	},
+	full : {
+		type: Boolean,
+		default() {
+			return false
+		}
+	}
 })
 
 function localeDate(value) {

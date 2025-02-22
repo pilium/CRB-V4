@@ -17,6 +17,7 @@ main.main#content
 	<SectionsContacts/>
 	<SectionsBanner/>
 	<SectionsQuickLinks/>
+	<SectionsArticles/>
 	<SectionsInformer/>
 </template>
 
