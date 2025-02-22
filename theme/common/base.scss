@@ -1,4 +1,6 @@
 html {
+	font-size: var(--font-size);
+
 	&[data-color="inverse"] {
 		--color-main: #fff;
 		--color-text: #fff;
@@ -138,7 +140,9 @@ html {
 	}
 
 	&[data-font="serif"] {
-		--font-family--default: serif;
+		body {
+			font-family: 'Times New Roman', Times, serif
+		}
 	}
 
 	&[data-fz="small"] { --font-size: 14px; }
