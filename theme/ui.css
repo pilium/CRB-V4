@@ -4,4 +4,6 @@
 
 @theme {
 	--ui-primary: var(--color-main);
+	--ui-bg: var(--color-light);
+	--ui-text-highlighted: var(--color-title);
 }
