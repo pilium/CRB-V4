@@ -14,9 +14,6 @@
 
 const { data: news } = await useAsyncData('articles', () => queryCollection('articles').all())
 
-console.log(news.value);
-
-
 const labels = {
 	last: 'Новости',
 }
