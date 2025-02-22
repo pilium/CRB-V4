@@ -12,7 +12,7 @@ export default defineContentConfig({
 	}),
     index: defineCollection({
       type: 'data',
-      source: 'pages/**/*.yml',
+      source: 'pages/index.yml',
       schema: z.object({
         links: z.array(z.string()),
         title: z.string(),
@@ -21,6 +21,16 @@ export default defineContentConfig({
         zapis: z.array(z.string()),
         Gosuslugi: z.array(z.string())
       })
-    })
+    }),
+	schedule: defineCollection({
+		type: 'data',
+		source: 'pages/shhedule.yml',
+		schema: z.object({
+		  title: z.string(),
+		  subtitle1: z.string(),
+		  subtitle2: z.string(),
+		  data: z.array(z.string()),
+		})
+	  })
   }
 })

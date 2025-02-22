@@ -1,0 +1,650 @@
+title: График приема врачей
+subtitle1: Расписание работы врачей в ст.Романовская
+subtitle2: Расписание работы врачей в х.Рябичи
+data:
+  - id: 1
+    cabinet: 307
+    days:
+      mn: "14:00 - 17:00"
+      tu: "нет приема"
+      wd: "нет приема"
+      th: "нет приема"
+      fr: "нет приема"
+      st: "Выходной"
+    job: "врач-уролог-андролог детский"
+    name: "Туфанов Камол Ниязович"
+    position: 20
+    status:
+      from: "29.07"
+      to: "13.08"
+    sub: false
+    both: true
+    vacation: false
+    noService: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 2
+    cabinet: 307
+    days:
+      mn: "14:00 - 17:00"
+      tu: "нет приема"
+      wd: "нет приема"
+      th: "нет приема"
+      fr: "нет приема"
+      st: "Выходной"
+    position: 19
+    job: "врач-хирург детский"
+    name: "Туфанов Камол Ниязович"
+    status:
+      from: "29.07"
+      to: "13.08"
+    sub: false
+    both: true
+    vacation: false
+    noService: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 3
+    sub: false
+    both: false
+    mono: false
+    name: "Турбеева Елизавета Андреевна"
+    status:
+      from: "25.09"
+      to: "07.10"
+    noService: false
+    days:
+      mn: "08:30 - 12:30"
+      tu: "08:30 - 12:30"
+      wd: "08:30 - 12:30"
+      th: "08:30 - 12:30"
+      fr: "12:00 - 16:00"
+      st: "Выходной"
+    position: 8
+    cabinet: 201
+    vacation: false
+    job: "врач-терапевт участковый"
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 4
+    cabinet: 301
+    days:
+      mn: "Нечёт. дни с 13:00 до 19:30 Чёт. дни с 08:00 до 14:36"
+      tu: "10:00 - 22:00"
+      wd: "10:00 - 22:00"
+      th: "10:00 - 22:00"
+      fr: "10:00 - 22:00"
+      st: "10:00 - 22:00"
+    position: 14
+    job: "Зубной врач"
+    name: "Гутовская Татьяна Геннадьевна"
+    status:
+      from: "02.09"
+      to: "22.09"
+    sub: false
+    both: false
+    mono: true
+    noService: false
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 5
+    sub: false
+    both: false
+    mono: false
+    name: "Мелкозерова Людмила Александровна"
+    status:
+      from: "28.10"
+      to: "11.11"
+    noService: false
+    days:
+      mn: "08:00 - 12:00"
+      tu: "08:00 - 12:00"
+      wd: "08:00 - 12:00"
+      th: "Выезд на ФАП"
+      fr: "08:00 - 12:00"
+      st: "Выходной"
+    position: 6
+    cabinet: 216
+    vacation: false
+    job: "врач-педиатр участковый"
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 6
+    days:
+      mn: "13:00 - 15:00"
+      tu: "13:00 - 15:00"
+      wd: "13:00 - 15:00"
+      th: "13:00 - 15:00"
+      fr: "13:00 - 15:00"
+      st: "Выходной"
+    position: 26
+    status:
+      from: "09.09"
+      to: "22.09"
+    cabinet: 216
+    job: "врач УЗИ"
+    name: "Власова Юлия Сергеевна"
+    both: true
+    vacation: false
+    noService: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 7
+    cabinet: 307
+    days:
+      mn: "нет приема"
+      tu: "нет приема"
+      wd: "14:00 - 17:00"
+      th: "нет приема"
+      fr: "нет приема"
+      st: "09:00 - 12:00"
+    position: 21
+    job: "врач-уролог"
+    name: "Шакиров Рустам Ташмурадович"
+    status:
+      from: "02.09"
+      to: "17.09"
+    sub: false
+    both: true
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    noService: false
+    mono: false
+
+  - id: 8
+    sub: false
+    both: false
+    mono: false
+    name: "Журавлева Евгения Александровна"
+    status:
+      from: "28.10"
+      to: "11.11"
+    noService: false
+    days:
+      mn: "08:30 - 15:00"
+      tu: "08:30 - 15:00"
+      wd: "08:30 - 15:00"
+      th: "08:30 - 15:00"
+      fr: "08:30 - 15:00"
+      st: "Выходной"
+    position: 12
+    cabinet: 214
+    vacation: false
+    job: "Врач-невролог"
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 9
+    cabinet: 306
+    days:
+      mn: "нет приема"
+      tu: "нет приема"
+      wd: "09:00 - 12:00"
+      th: "09:00 - 12:00"
+      fr: "09:00 - 12:00"
+      st: "Выходной"
+    position: 2
+    job: "Врачебная комиcсия"
+    name: "Раджапов Байрам Бахтиярович"
+    status:
+      from: "09.08"
+      to: "25.08"
+    sub: false
+    both: true
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    noService: false
+
+  - id: 10
+    status:
+      from: "23.09"
+      to: "02.10"
+    days:
+      mn: "08:30 - 12:30"
+      tu: "08:30 - 12:30"
+      wd: "08:30 - 12:30"
+      th: "08:30 - 12:30"
+      fr: "08:30 - 12:30"
+      st: "Выходной"
+    position: 4
+    name: "Юзефова Лариса Владимировна"
+    cabinet: 218
+    job: "врач-педиатр участковый"
+    noService: false
+    sub: false
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    vacation: false
+    both: false
+
+  - id: 11
+    days:
+      mn: "08:00 - 16:30"
+      tu: "08:00 - 16:30"
+      wd: "нет приема"
+      th: "08:00 - 16:30"
+      fr: "08:00 - 16:30"
+      st: "Выходной"
+    status:
+      from: "23.09"
+      to: "23.10"
+    position: 25
+    name: "Тахсимов Мааддин Байрамович"
+    cabinet: 202
+    job: "врач-нарколог"
+    noService: false
+    vacation: false
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    both: true
+    sub: false
+    mono: false
+
+  - id: 12
+    cabinet: 313
+    days:
+      mn: "нет приема"
+      tu: "08:00 - 17:00"
+      wd: "08:00 - 17:00"
+      th: "08:00 - 17:00"
+      fr: "08:00 - 17:00"
+      st: "Выходной"
+    position: 10
+    job: "Акушер - гинеколог"
+    name: "Звягинцева Екатерина Николаевна"
+    status:
+      from: "15.08"
+      to: "03.09"
+    sub: false
+    both: true
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    noService: false
+
+  - id: 13
+    cabinet: 306
+    days:
+      mn: "08:00 - 18:00"
+      tu: "08:00 - 18:00"
+      wd: "08:00 - 18:00"
+      th: "08:00 - 18:00"
+      fr: "08:00 - 18:00"
+      st: "Выходной"
+    position: 1
+    job: "Заведующий поликлиникой"
+    name: "Раджапов Байрам Бахтиярович"
+    status:
+      from: "05.08"
+      to: "16.08"
+    sub: false
+    both: true
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    noService: false
+
+  - id: 14
+    cabinet: 215
+    days:
+      mn: "08:30 - 12:30"
+      tu: "08:30 - 12:30"
+      wd: "08:30 - 12:30"
+      th: "08:30 - 12:30"
+      fr: "08:30 - 12:30"
+      st: "Выходной"
+    position: 3
+    job: "врач-педиатр участковый"
+    name: "Власова Юлия Сергеевна"
+    status:
+      from: "09.09"
+      to: "22.09"
+    sub: false
+    both: false
+    vacation: false
+    noService: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 15
+    cabinet: 102
+    days:
+      mn: "08:00 - 15:00"
+      tu: "08:00 - 15:00"
+      wd: "08:00 - 15:00"
+      th: "08:00 - 15:00"
+      fr: "08:00 - 15:00"
+      st: "Выходной"
+    position: 1
+    job: "Функциональная диагностика"
+    name: "Александрина Елена Викторовна"
+    status: {}
+    sub: true
+    both: false
+
+  - id: 16
+    cabinet: 314
+    days:
+      mn: "09:00 - 15:00"
+      tu: "09:00 - 15:00"
+      wd: "09:00 - 15:00"
+      th: "09:00 - 15:00"
+      fr: "09:00 - 15:00"
+      st: "Выходной"
+    position: 13
+    job: "врач-невролог"
+    name: "Рамизов Бахтиер Фарамизович"
+    status:
+      from: "07.10"
+      to: "28.10"
+    sub: false
+    both: true
+    noService: false
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 17
+    cabinet: 114
+    days:
+      mn: "08:00 - 12:00"
+      tu: "08:00 - 12:00"
+      wd: "08:00 - 12:00"
+      th: "08:00 - 12:00"
+      fr: "нет приема"
+      st: "Выходной"
+    job: "врач-терапевт участковый"
+    name: "Караваев Валерий Семенович"
+    status:
+      from: "19.09"
+      to: "16.10"
+    position: 1
+    sub: true
+    both: false
+    noService: false
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 18
+    cabinet: 301
+    days:
+      mn: "Нечёт. дни с 08:00 до 14:36 Чёт. дни с 13:00 до 19:30"
+    job: "врач-стоматолог"
+    name: "Глогусь Любовь Николаевна"
+    status:
+      type: "no-service"
+      from: "12.08"
+      to: "01.09"
+    position: 15
+    sub: false
+    both: false
+    mono: true
+    noService: false
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 19
+    cabinet: 113
+    days:
+      mn: "08:00 - 12:00"
+      tu: "08:00 - 12:00"
+      wd: "нет приема"
+      th: "08:00 - 12:00"
+      fr: "08:00 - 12:00"
+      st: "Выходной"
+    position: 1
+    job: "врач-терапевт участковый"
+    name: "Казимов Аскар Казимович"
+    status: {}
+    sub: true
+    both: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    vacation: false
+
+  - id: 20
+    status:
+      from: "10.09"
+      to: "25.09"
+    days:
+      mn: "12:00 - 16:00"
+      tu: "12:00 - 16:00"
+      wd: "12:00 - 16:00"
+      th: "12:00 - 16:00"
+      fr: "08:00 - 12:00"
+      st: "По графику"
+    position: 7
+    name: "Садовова Валентина Павловна"
+    cabinet: 213
+    job: "врач-терапевт участковый"
+    sub: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    noService: false
+    vacation: false
+
+  - id: 21
+    sub: false
+    both: true
+    mono: false
+    name: "Садовничая Ольга Олеговна"
+    status:
+      from: "28.10"
+      to: "05.11"
+    noService: false
+    days:
+      mn: "нет приема"
+      tu: "нет приема"
+      wd: "14:30 - 17:00"
+      th: "нет приема"
+      fr: "нет"
+      st: "09-00 - 12:00"
+    position: 27
+    cabinet: 107
+    vacation: false
+    job: "врач УЗИ"
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 22
+    cabinet: 305
+    days:
+      mn: "08:30 - 16:00"
+      tu: "08:30 - 16:00"
+      wd: "08:30 - 16:00"
+      th: "08:30 - 16:00"
+      fr: "08:30 - 16:00"
+      st: "Выходной"
+    position: 18
+    job: "врач-хирург"
+    name: "Ильин Андрей Владимирович"
+    status:
+      from: "07.08"
+      to: "25.08"
+    sub: false
+    both: true
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    noService: false
+
+  - id: 23
+    cabinet: 126
+    days:
+      mn: "08:00 - 12:00"
+      tu: "08:00 - 12:00"
+      wd: "нет приема"
+      th: "08:00 - 12:00"
+      fr: "08:00 - 12:00"
+      st: "Выходной"
+    position: 1
+    job: "врач-педиатр участковый"
+    name: "Караваева Эльвира Викторовна"
+    status:
+      from: "19.09"
+      to: "16.10"
+    sub: true
+    both: false
+    vacation: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 24
+    sub: false
+    both: false
+    mono: false
+    name: "Просветова Ксения Александровна"
+    status:
+      from: "28.08"
+      to: "15.09"
+    days:
+      mn: "08:30 - 12:30"
+      tu: "08:30 - 12:30"
+      wd: "08:30 - 12:30"
+      th: "08:30 - 12:30"
+      fr: "08:30 - 12:30"
+      st: "Нет приема"
+    position: 5
+    cabinet: 217
+    vacation: false
+    job: "врач-педиатр участковый"
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    noService: false
+
+  - id: 25
+    cabinet: 312
+    days:
+      mn: "08:20 - 14:00"
+      tu: "08:20 - 14:00"
+      wd: "08:20 - 14:00"
+      th: "08:20 - 14:00"
+      fr: "08:20 - 14:00"
+      st: "Выходной"
+    position: 11
+    job: "Акушер - гинеколог"
+    name: "Поднебесная Марина Васильевна"
+    status:
+      from: "18.11"
+      to: "24.11"
+    sub: false
+    both: true
+    vacation: false
+    noService: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 26
+    cabinet: 108
+    days:
+      mn: "08:00 - 15:42"
+      tu: "08:00 - 15:42"
+      wd: "08:00 - 15:42"
+      th: "08:00 - 15:42"
+      fr: "08:00 - 15:42"
+      st: "Выходной"
+    position: 1
+    job: "Кабинет физиотерапии"
+    name: "Садовова Людмила Григорьевна"
+    status: {}
+    sub: true
+    both: false
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 27
+    sub: false
+    both: false
+    name: "Москвина Татьяна Владимировна"
+    status:
+      from: "12.08"
+      to: "23.08"
+    position: 9
+    noService: false
+    days:
+      mn: "08:00 - 12:00"
+      tu: "08:00 - 12:00"
+      wd: "08:00 - 12:00"
+      th: "08:00 - 12:00"
+      fr: "08:00 - 12:00"
+      st: "Выходной"
+    cabinet: 210
+    vacation: false
+    job: "врач-терапевт участковый"
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+
+  - id: 28
+    sub: false
+    both: true
+    mono: false
+    name: "Денисова Олеся Геннадьевна"
+    status: null
+    noService: false
+    days:
+      mn: "09:00 - 15:00"
+      tu: "09:00 - 15:00"
+      wd: "09:00 - 15:00"
+      th: "нет приема"
+      fr: "10:00 - 15:00"
+      st: "09:00 - 12:00"
+    cabinet: 311
+    vacation: false
+    job: "врач-кардиолог"
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    position: 12
+
+  - id: 29
+    sub: false
+    both: true
+    mono: false
+    name: "Яровая Руфина Салхидиновна"
+    status:
+      from: "07.10"
+      to: "28.10"
+    noService: false
+    days:
+      mn: "08:30 - 14:30"
+      tu: "08:30 - 14:30"
+      wd: "08:30 - 14:30"
+      th: "08:30 - 14:30"
+      fr: "08:30 - 14:30"
+      st: "Выходной"
+    cabinet: 310
+    vacation: false
+    job: "Врач -Оториноларинголог"
+    created_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    updated_by:
+      $oid: "5e1c0b2df7d9d30084bda291"
+    position: 8

@@ -1,6 +1,11 @@
+<script setup>
+import { blindStore } from '~/store/blind.store';
+
+const store = blindStore()
+</script>
 <template lang="pug">
 	.blind-toggle
-		button.btn.btn--blind.btn--bg-tr.btn--with-icon(type="button" aria-label="Переключить в режим для слабовидящих")
+		button.btn.btn--blind.btn--bg-tr.btn--with-icon(type="button" aria-label="Переключить в режим для слабовидящих" @click="store.toggle()")
 			<Icon name="my-icon:blind" class="blind-toggle__icon" title="Иконка ссылка на форму обратной связи"/>
 </template>
 <style lang="scss">

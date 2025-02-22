@@ -4,11 +4,11 @@
 		main.main#content
 			commonArticle
 				template(v-slot:title)
-					h1.article__title График приема врачей
+					h1.article__title {{ schedules.title }}
 				template(v-slot:text)
 					.article__text
-						b-tabs(fill nav-class="tabs__list" content-class="tabs__item")
-							b-tab(title="ст.Романовская" active title-link-class="link tabs__link" title-item-class="tabs__item")
+						UTabs(:items="items" variant="link" class="gap-4 w-full" :ui="{ trigger: 'flex-1' }")
+							template(#account="{ item }")
 								commonTable(:tableData="tableData")
 									template(v-slot:tableData)
 										thead
@@ -29,7 +29,7 @@
 												th
 													span Cб
 										tbody
-											template(v-for="(item, key) in schedules")
+											template(v-for="(item, key) in schedules.data")
 												tr(v-if="Boolean(!item.sub)")
 													td {{ item.name }}
 													td {{ item.job }}
@@ -46,7 +46,7 @@
 																td.attention {{ item }}
 															template(v-else)
 																td {{ item }}
-							b-tab(title="х.Рябичи" title-link-class="link tabs__link" title-item-class="tabs__item")
+							template(#password="{ item }")
 								commonTable(:tableData="tableData1")
 									template(v-slot:tableData)
 										thead
@@ -67,7 +67,7 @@
 												th
 													span Cб
 										tbody
-											template(v-for="(item, key) in schedules")
+											template(v-for="(item, key) in schedules.data")
 												tr(v-if="Boolean(item.sub)")
 													td {{ item.name }}
 													td {{ item.job }}
@@ -87,17 +87,27 @@
 </template>
 
 <script setup>
+const { data: schedules } = await useAsyncData(() => queryCollection('schedule').first())
+
+const items = [
+  {
+    label: 'ст.Романовская',
+    slot: 'account'
+  },
+  {
+    label: 'х. Рябичев',
+    slot: 'password'
+  }
+]
 const tableData = {
-	caption: 'Расписание работы врачей в ст.Романовская',
+	caption: schedules.value.subtitle1,
 	tableClass: 'table--schedule',
 }
 const tableData1 = {
-	caption: 'Расписание работы врачей в х.Рябичи',
+	caption: schedules.value.subtitle2,
 	tableClass: 'table--schedule',
 }
 const days = []
-
-let schedules = await useFetch('https://xn----8sbbffg6bfugcbry7d4i.xn--p1ai/data/schedules.json');
 
 
 // const getDays = () => {

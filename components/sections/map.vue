@@ -6,109 +6,106 @@
 </template>
 
 <script setup>
-// const wrapper = document.querySelector('.map');
+onMounted(() => {
+const wrapper = document.querySelector('.map');
 
-// const init = () => {
-// 	let myMapTemp = new ymaps.Map('map', {
-// 		center: [47.539501, 42.014754],
-// 		zoom: 15,
-// 		controls: ['fullscreenControl'],
-// 		searchControlProvider: 'yandex#search',
-// 	});
+const init = () => {
+	let myMapTemp = new ymaps.Map('map', {
+		center: [47.539501, 42.014754],
+		zoom: 15,
+		controls: ['fullscreenControl'],
+		searchControlProvider: 'yandex#search',
+	});
 
-// 	let myPlacemarkTemp = new ymaps.Placemark([52.44, 69.73, 49.81, 62.12], {}, {
-// 		iconLayout: 'default#imageWithContent',
-// 		iconImageSize: [50, 50],
-// 		iconImageOffset: [-25, -50],
-// 	});
+	let myPlacemarkTemp = new ymaps.Placemark([52.44, 69.73, 49.81, 62.12], {}, {
+		iconLayout: 'default#imageWithContent',
+		iconImageSize: [50, 50],
+		iconImageOffset: [-25, -50],
+	});
 
-// 	myMapTemp.geoObjects.add(myPlacemarkTemp);
+	myMapTemp.geoObjects.add(myPlacemarkTemp);
 
-// 	let layer = myMapTemp.layers.get(0).get(0);
+	let layer = myMapTemp.layers.get(0).get(0);
 
-// 	this.waitForTilesLoad(layer).then(() => {
-// 		wrapper.classList.add('is-loaded');
-// 	});
+	waitForTilesLoad(layer).then(() => {
+		wrapper.classList.add('is-loaded');
+	});
+};
 
-// 	setTimeout(() => {
-// 		this.$nuxt.$loading.finish();
-// 	}, 500);
-// };
+let ymap = () => {
+	const trigger = document.querySelector('.map__overlay');
 
-// let ymap = () => {
-// 	const trigger = document.querySelector('.map__overlay');
+	trigger.addEventListener('click', () => {
+		wrapper.classList.add('is-active');
 
-// 	trigger.addEventListener('click', () => {
-// 		this.$nuxt.$loading.start();
-// 		wrapper.classList.add('is-active');
+		loadScript('https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;loadByRequire=1', () => {
+			ymaps.load(init);
+		});
+	});
+};
 
-// 		this.loadScript('https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;loadByRequire=1', () => {
-// 			ymaps.load(init);
-// 		});
-// 	});
-// };
+function loadScript(url, callback) {
+	let script = document.createElement('script');
 
-// function loadScript(url, callback) {
-// 	let script = document.createElement('script');
+	if (script.readyState) { // IE
+		// eslint-disable-next-line func-names
+		script.onreadystatechange = function () {
+			if (script.readyState === 'loaded' ||
+		script.readyState === 'complete') {
+				script.onreadystatechange = null;
+				callback();
+			}
+		};
+	} else { // Другие браузеры
+		// eslint-disable-next-line func-names
+		script.onload = function () {
+			callback();
+		};
+	}
 
-// 	if (script.readyState) { // IE
-// 		// eslint-disable-next-line func-names
-// 		script.onreadystatechange = function () {
-// 			if (script.readyState === 'loaded' ||
-// 		script.readyState === 'complete') {
-// 				script.onreadystatechange = null;
-// 				callback();
-// 			}
-// 		};
-// 	} else { // Другие браузеры
-// 		// eslint-disable-next-line func-names
-// 		script.onload = function () {
-// 			callback();
-// 		};
-// 	}
+	script.src = url;
+	document.getElementsByTagName('head')[0].appendChild(script);
+}
 
-// 	script.src = url;
-// 	document.getElementsByTagName('head')[0].appendChild(script);
-// }
+function waitForTilesLoad(layer) {
+	return new ymaps.vow.Promise((resolve) => {
+		let tc = getTileContainer(layer);
 
-// function waitForTilesLoad(layer) {
-// 	return new ymaps.vow.Promise((resolve) => {
-// 		let tc = this.getTileContainer(layer);
+		let
+			readyAll = true;
 
-// 		let
-// 			readyAll = true;
+		tc.tiles.each((tile) => {
+			if (!tile.isReady()) {
+				readyAll = false;
+			}
+		});
+		if (readyAll) {
+			resolve();
+		} else {
+			tc.events.once('ready', () => {
+				resolve();
+			});
+		}
+	});
+}
 
-// 		tc.tiles.each((tile) => {
-// 			if (!tile.isReady()) {
-// 				readyAll = false;
-// 			}
-// 		});
-// 		if (readyAll) {
-// 			resolve();
-// 		} else {
-// 			tc.events.once('ready', () => {
-// 				resolve();
-// 			});
-// 		}
-// 	});
-// }
+function getTileContainer(layer) {
+	for (let k in layer) {
+		// eslint-disable-next-line no-prototype-builtins
+		if (layer.hasOwnProperty(k)) {
+			if (
+				layer[k] instanceof ymaps.layer.tileContainer.CanvasContainer || layer[k] instanceof ymaps.layer.tileContainer.DomContainer
+			) {
+				return layer[k];
+			}
+		}
+	}
 
-// function getTileContainer(layer) {
-// 	for (let k in layer) {
-// 		// eslint-disable-next-line no-prototype-builtins
-// 		if (layer.hasOwnProperty(k)) {
-// 			if (
-// 				layer[k] instanceof ymaps.layer.tileContainer.CanvasContainer || layer[k] instanceof ymaps.layer.tileContainer.DomContainer
-// 			) {
-// 				return layer[k];
-// 			}
-// 		}
-// 	}
+	return null;
+}
 
-// 	return null;
-// }
-
-// ymap();
+ymap();
+})
 
 // export default {
 // 	data() {
