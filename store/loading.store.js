@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const isLoading = defineStore('Loading', {
 	state: () => ({
-		isLoading: true,
+		isLoading: false,
 	}),
 	actions: {
 		set(data) {
