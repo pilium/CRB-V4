@@ -23,6 +23,7 @@ function setYear() {
 	.footer {
 		padding: 8px 16px 8px 16px;
 		background-color: var(--color-bg-main);
+		margin-top: auto;
 
 		&__inner {
 			flex-direction: column-reverse;
