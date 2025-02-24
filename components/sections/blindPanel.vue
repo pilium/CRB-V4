@@ -101,7 +101,7 @@ onMounted(() => {
 	savedParametrs = JSON.parse(localStorage.getItem('blind'));
 
 	if (savedParametrs) {
-		for (const [data, value] of Object.entries(this.savedParametrs)) {
+		for (const [data, value] of Object.entries(savedParametrs)) {
 			root.setAttribute(data, value);
 		}
 	}
