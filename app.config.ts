@@ -9,6 +9,11 @@ export default defineAppConfig({
 		  }
 		}
 	  },
+	  tabs: {
+		defaultVariants: {
+			size: 'lg'
+		}
+	  }
 	}
 })
 
