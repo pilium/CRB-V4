@@ -8,7 +8,7 @@
 				template(v-slot:text)
 					.article__text
 						.container
-							UTabs(:items="items" class="w-full")
+							UTabs(:items="items" variant="link" class="gap-4 w-full" size="xl" :ui="{ trigger: 'flex-1' }")
 								template(#account="{ item }")
 									figure.article__figure
 										img(src="/media/protect/1.jpg" alt="Как защитить себя в ванной")
