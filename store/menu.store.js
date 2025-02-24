@@ -1,14 +1,14 @@
 import { defineStore } from "pinia";
 
-export const blindStore = defineStore('blind', {
+export const menuStore = defineStore('menu', {
 	state: () => ({
 		isSandwichOpen: false,
 		isMenuOpen: false,
 	}),
 	actions : {
 		toggle() {
-			this.state.isSandwichOpen = !this.state.isSandwichOpen;
-			this.state.isMenuOpen = !this.state.isMenuOpen;
+			this.isSandwichOpen = !this.isSandwichOpen;
+			this.isMenuOpen = !this.isMenuOpen;
 		}
 	}
 })

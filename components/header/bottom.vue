@@ -1,3 +1,8 @@
+<script setup>
+import { menuStore } from '~/store/menu.store';
+
+const store = menuStore()
+</script>
 <template lang="pug">
 	.header-bottom
 		.container.container--header.fl
@@ -11,7 +16,7 @@
 				.header-bottom__blind-toggle
 					<headerBlindToggle/>
 				<headerSandwich/>
-			.header-bottom__menu
+			.header-bottom__menu(:class="{ active: store.isMenuOpen }")
 				<headerMenu/>
 </template>
 <style lang="scss" scoped>

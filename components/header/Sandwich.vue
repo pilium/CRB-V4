@@ -1,6 +1,13 @@
+<script setup>
+import { menuStore } from '~/store/menu.store';
+
+const store = menuStore()
+</script>
 <template lang="pug">
 	button.sandwich(
 		type="button"
+		@click="store.toggle()"
+		:class="{ active: store.isSandwichOpen }"
 		aria-expanded="false"
 		title="открыть меню"
 		aria-haspopup="true" tabindex="0" aria-controls="main-nav-menu"
