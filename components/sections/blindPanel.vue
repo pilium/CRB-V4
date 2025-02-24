@@ -235,7 +235,6 @@ onMounted(() => {
 		toast.add({
 			title: 'Настройки сброшены',
 			description: 'Настройки режима для слабовидящих не применяются',
-			color: 'success',
 			color: 'primary'
 		})
 	}
