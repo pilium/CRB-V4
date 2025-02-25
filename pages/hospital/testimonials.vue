@@ -15,11 +15,22 @@
 										footer
 											cite.testimonials__cite
 												span.testimonials__name {{ item.name }}
-												span.testimonials__date {{ timeNormalize(item.meta.date) }}
+												span.testimonials__date {{ timeNormalize(item.date) }}
 </template>
 
 <script setup>
-const { data } = await useAsyncData('reviews', () => queryCollection('reviews').all())
+// const config = useRuntimeConfig()
+const { data } = await useAsyncData('reviews', () => queryCollection('reviews').select('description','meta').all(), {
+  transform: data => data.map(item => ({
+	description: item.description,
+	name: item.meta.name,
+	date: item.meta.date
+}))
+})
+// const { data } = await useAsyncData('reviews', () => DB.listDocuments(config.public.API_BASE_ID, config.public.DB_TESTIMONIALS) )
+
+console.log(data);
+
 
 function timeNormalize(value) {
 	if (!value) {
