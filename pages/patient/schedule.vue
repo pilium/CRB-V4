@@ -7,83 +7,83 @@
 					h1.article__title {{ schedules.title }}
 				template(v-slot:text)
 					.article__text
-						UTabs(:items="items" variant="link" class="gap-4 w-full" :ui="{ trigger: 'flex-1' }")
-							template(#account="{ item }")
-								commonTable(:tableData="tableData")
-									template(v-slot:tableData)
-										thead
-											tr
-												th Ф.И.О.
-												th Специальность
-												th.cabinet.table__cell-response(data-title="Кабинет") Кабинет
-												th
-													span Пн
-												th
-													span Вт
-												th
-													span Ср
-												th
-													span Чт
-												th
-													span Пт
-												th
-													span Cб
-										tbody
-											template(v-for="(item, key) in schedules.data")
-												tr(v-if="Boolean(!item.sub)")
-													td {{ item.name }}
-													td {{ item.job }}
-													td.cabinet.table__cell-response(data-title="Кабинет") {{ item.cabinet }}
-													template(v-if="item.mono")
-														td.attention(colspan="6") {{ item.days.mn }}
-													template(v-else-if="item.noService")
-														td.attention(colspan="6") Прием пациентов временно не ведется
-													template(v-else-if="item.vacation")
-														td.attention(colspan="6") Отпуск c {{ item.status.from }} по {{ item.status.to }}
+						//- UTabs(:items="items" variant="link" class="gap-4 w-full" :ui="{ trigger: 'flex-1' }")
+						//- 	template(#account="{ item }")
+						commonTable(:tableData="tableData")
+							template(v-slot:tableData)
+								thead
+									tr
+										th Ф.И.О.
+										th Специальность
+										th.cabinet.table__cell-response(data-title="Кабинет") Кабинет
+										th
+											span Пн
+										th
+											span Вт
+										th
+											span Ср
+										th
+											span Чт
+										th
+											span Пт
+										th
+											span Cб
+								tbody
+									template(v-for="(item, key) in schedules.data")
+										tr(v-if="Boolean(!item.sub)")
+											td {{ item.name }}
+											td {{ item.job }}
+											td.cabinet.table__cell-response(data-title="Кабинет") {{ item.cabinet }}
+											template(v-if="item.mono")
+												td.attention(colspan="6") {{ item.days.mn }}
+											template(v-else-if="item.noService")
+												td.attention(colspan="6") Прием пациентов временно не ведется
+											template(v-else-if="item.vacation")
+												td.attention(colspan="6") Отпуск c {{ item.status.from }} по {{ item.status.to }}
+											template(v-else)
+												template(v-for="(item) in item.days")
+													template(v-if="item === 'нет приема' || item === 'Выходной' || item === 'По графику'")
+														td.attention {{ item }}
 													template(v-else)
-														template(v-for="(item) in item.days")
-															template(v-if="item === 'нет приема' || item === 'Выходной' || item === 'По графику'")
-																td.attention {{ item }}
-															template(v-else)
-																td {{ item }}
-							template(#password="{ item }")
-								commonTable(:tableData="tableData1")
-									template(v-slot:tableData)
-										thead
-											tr
-												th Ф.И.О.
-												th Специальность
-												th.cabinet.table__cell-response(data-title="Кабинет") Кабинет
-												th
-													span Пн
-												th
-													span Вт
-												th
-													span Ср
-												th
-													span Чт
-												th
-													span Пт
-												th
-													span Cб
-										tbody
-											template(v-for="(item, key) in schedules.data")
-												tr(v-if="Boolean(item.sub)")
-													td {{ item.name }}
-													td {{ item.job }}
-													td.cabinet.table__cell-response(data-title="Кабинет") {{ item.cabinet }}
-													template(v-if="item.mono")
-														td.attention(colspan="6") {{ item.days.mn }}
-													template(v-else-if="item.noService")
-														td.attention(colspan="6") Прием пациентов временно не ведется
-													template(v-else-if="item.vacation")
-														td.attention(colspan="6") Отпуск c {{ item.status.from }} по {{ item.status.to }}
-													template(v-else)
-														template(v-for="(item) in item.days")
-															template(v-if="item === 'нет приема' || item === 'Выходной' || item === 'По графику'")
-																td.attention {{ item }}
-															template(v-else)
-																td {{ item }}
+														td {{ item }}
+							//- template(#password="{ item }")
+							//- 	commonTable(:tableData="tableData1")
+							//- 		template(v-slot:tableData)
+							//- 			thead
+							//- 				tr
+							//- 					th Ф.И.О.
+							//- 					th Специальность
+							//- 					th.cabinet.table__cell-response(data-title="Кабинет") Кабинет
+							//- 					th
+							//- 						span Пн
+							//- 					th
+							//- 						span Вт
+							//- 					th
+							//- 						span Ср
+							//- 					th
+							//- 						span Чт
+							//- 					th
+							//- 						span Пт
+							//- 					th
+							//- 						span Cб
+							//- 			tbody
+							//- 				template(v-for="(item, key) in schedules.data")
+							//- 					tr(v-if="Boolean(item.sub)")
+							//- 						td {{ item.name }}
+							//- 						td {{ item.job }}
+							//- 						td.cabinet.table__cell-response(data-title="Кабинет") {{ item.cabinet }}
+							//- 						template(v-if="item.mono")
+							//- 							td.attention(colspan="6") {{ item.days.mn }}
+							//- 						template(v-else-if="item.noService")
+							//- 							td.attention(colspan="6") Прием пациентов временно не ведется
+							//- 						template(v-else-if="item.vacation")
+							//- 							td.attention(colspan="6") Отпуск c {{ item.status.from }} по {{ item.status.to }}
+							//- 						template(v-else)
+							//- 							template(v-for="(item) in item.days")
+							//- 								template(v-if="item === 'нет приема' || item === 'Выходной' || item === 'По графику'")
+							//- 									td.attention {{ item }}
+							//- 								template(v-else)
+							//- 									td {{ item }}
 </template>
 
 <script setup>
