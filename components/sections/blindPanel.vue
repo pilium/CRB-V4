@@ -98,7 +98,7 @@ onMounted(() => {
 
 	let blindParametrs = {};
 
-	savedParametrs = JSON.parse(localStorage.getItem('blind'));
+	const savedParametrs = JSON.parse(localStorage.getItem('blind'));
 
 	if (savedParametrs) {
 		for (const [data, value] of Object.entries(savedParametrs)) {
