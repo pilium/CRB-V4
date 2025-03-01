@@ -1,20 +1,14 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
-<script setup>
-const modalData = {
-	id: 'modal-2',
-	ref: 'my-modal-1',
-	title: 'Информация о разделе документы',
-	fileHint: true,
-}
-</script>
 <template lang="pug">
 	section.files#docs
 		.files__wrap.fl
 			h2.files__title Документы
-			button.btn.btn--cancel.btn--pd2.btn--bg-tr(aria-haspopup="true" aria-expanded="false")
-				span.button__icon
-					<Icon name="my-icon:question" class="files__icon" title="Информация по данному разделу"/>
-			//- <Modal :modal="modalData"/>
+			UModal(title="Информация о разделе документы")
+				button.btn.btn--cancel.btn--pd2.btn--bg-tr(aria-haspopup="true" aria-expanded="false")
+					span.button__icon
+						<Icon name="my-icon:question" class="files__icon" title="Информация по данному разделу"/>
+				template(#content)
+					<fileHint/>
 		.files__items.fw
 			slot(name="file")
 </template>
