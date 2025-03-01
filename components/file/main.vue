@@ -29,7 +29,7 @@ function toggle() {
 					template(v-if="fileData.addition")
 						a.file__tag.file__tag--dl.fl(:href="fileData.additionLink")
 							span.hide-text Приложения к файлу
-							Icon(name="my-icon:downloadAdd" class="file__icon file__icon--dl" title="Приложения к файлу")
+							Icon(name="my-icon:download" class="file__icon file__icon--dl" title="Приложения к файлу")
 				span.file__tag.fl(title="Дата последнего изменения") {{ fileData.date }}
 		.file__hint(:class="{ show: isFileHintOpen }")
 			span.file__open-hint(tabindex="0" @click="toggle")
