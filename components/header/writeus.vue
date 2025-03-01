@@ -3,7 +3,7 @@
 		button.btn.btn--write-us(type="button")
 			span.button__icon
 				<Icon name="my-icon:pen" class="write-us__icon" title="Иконка ссылка на форму обратной связи"/>
-			span.btn__text Написать нам
+			span.btn__text Запись на прием
 		//- <Modal :modal="modalData"/>
 </template>
 
