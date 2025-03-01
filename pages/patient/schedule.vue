@@ -16,18 +16,8 @@
 										th Ф.И.О.
 										th Специальность
 										th.cabinet.table__cell-response(data-title="Кабинет") Кабинет
-										th
-											span Пн
-										th
-											span Вт
-										th
-											span Ср
-										th
-											span Чт
-										th
-											span Пт
-										th
-											span Cб
+										th(v-for="day in weekData" :key="day.date") {{ day.name }}
+											span.text-sm  ({{ day.date }})
 								tbody
 									template(v-for="(item, key) in schedules.data")
 										tr(v-if="Boolean(!item.sub)")
@@ -99,6 +89,11 @@ const items = [
     slot: 'password'
   }
 ]
+
+const days = []
+const weekData = ref([]);
+const daysOfWeek = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+
 const tableData = {
 	caption: schedules.value.subtitle1,
 	tableClass: 'table--schedule',
@@ -107,8 +102,37 @@ const tableData1 = {
 	caption: schedules.value.subtitle2,
 	tableClass: 'table--schedule',
 }
-const days = []
 
+const getCurrentWeekData = () => {
+	const today = new Date();
+	const dayOfWeek = today.getDay();
+	const startOfWeek = new Date(today);
+
+	startOfWeek.setDate(today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+
+	const data = [];
+	for (let i = 0; i < 6; i++) {
+		const currentDate = new Date(startOfWeek);
+		currentDate.setDate(startOfWeek.getDate() + i);
+
+		data.push({
+			name: daysOfWeek[i],
+			date: formatDate(currentDate),
+		});
+	}
+	return data;
+};
+const formatDate = (date) => {
+	const day = String(date.getDate()).padStart(2, '0');
+	const month = String(date.getMonth() + 1).padStart(2, '0');
+	const year = date.getFullYear();
+	return `${day}.${month}.${year}`;
+};
+
+
+onMounted(() => {
+	weekData.value = getCurrentWeekData();
+});
 
 // const getDays = () => {
 // 	schedules.forEach((element) => {
