@@ -129,10 +129,54 @@ const formatDate = (date) => {
 	return `${day}.${month}.${year}`;
 };
 
+const toast = useToast()
 
 onMounted(() => {
 	weekData.value = getCurrentWeekData();
-});
+
+	function showToast(data) {
+		if(data) {
+			const formatDate = new Date(data.selectedDate).toLocaleString('ru-RU', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric',
+			})
+			toast.add({
+				title: `Запись к ${data.doctor}`,
+				description: `${data.name}, ждем вас ${formatDate} в ${data.selectedTime}`,
+				color: 'primary'
+			})
+		}
+	}
+
+	const storedData = localStorage.getItem('formData');
+
+	removePastEvents(storedData)
+
+	if (storedData) {
+		const parsedData = JSON.parse(storedData);
+		parsedData.forEach((item) => {
+			showToast(item)
+		})
+	} else {
+		console.log('Данные в localStorage отсутствуют.');
+	}
+	});
+
+	function removePastEvents(data) {
+		if (!data) return;
+
+		const events = JSON.parse(data);
+
+		const now = new Date();
+
+		const upcomingEvents = events.filter(event => {
+			const eventDate = new Date(`${event.selectedDate.split('T')[0]}T${event.selectedTime}`);
+			return eventDate > now;
+		});
+
+		localStorage.setItem('formData', JSON.stringify(upcomingEvents));
+	}
 
 // const getDays = () => {
 // 	schedules.forEach((element) => {

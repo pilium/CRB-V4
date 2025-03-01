@@ -1,10 +1,19 @@
 <template lang="pug">
 	.write-us
-		button.btn.btn--write-us(type="button")
-			span.button__icon
-				<Icon name="my-icon:pen" class="write-us__icon" title="Иконка ссылка на форму обратной связи"/>
-			span.btn__text Запись на прием
-		//- <Modal :modal="modalData"/>
+		//- UModal(title="Записаться на прием" :style="{ maxHeight: '100vh', overflowY: 'auto' }")
+		//- 	button.btn.btn--write-us(type="button")
+		//- 		span.button__icon
+		//- 			<Icon name="my-icon:pen" class="write-us__icon" title="Иконка ссылка на форму обратной связи"/>
+		//- 		span.btn__text Запись на прием
+		//- 	template(#content)
+		//- 		<feedbackMain/>
+		UModal(title="Записаться на прием" description="Введите ваши данные для записи к врачу нашей больницы")
+			button.btn.btn--write-us(type="button")
+				span.button__icon
+					<Icon name="my-icon:pen" class="write-us__icon" title="Иконка ссылка на форму обратной связи"/>
+				span.btn__text Запись на прием
+			template(#body)
+				<zapisMain/>
 </template>
 
 <style lang="scss">

@@ -11,8 +11,8 @@ const store = menuStore()
 					nuxt-link.link.menu__link(to="/")
 						.menu__icon
 							<Icon name="my-icon:home" title="На главную"/>
-				//- .header-bottom__writeUs
-				//- 	<headerWriteus/>
+				.header-bottom__writeUs
+					<headerWriteus/>
 				.header-bottom__blind-toggle
 					<headerBlindToggle/>
 				<headerSandwich/>

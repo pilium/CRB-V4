@@ -11,3 +11,11 @@
 .blind button {
 	font: menu;
 }
+[role="dialog"] {
+	overflow-y: auto;
+}
+#select-date {
+	width: 100%;
+    min-height: 48px;
+    max-width: 100%;
+}
