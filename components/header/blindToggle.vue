@@ -12,11 +12,6 @@ const store = blindStore()
 	.blind-toggle {
 		line-height: 0;
 
-		&.isActive {
-			.btn { background: var(--color-light); }
-			.blind-toggle__icon { fill: var(--color-icon); }
-		}
-
 		.btn {
 			@media screen and (min-width: 992px) {
 				border-radius: 0;
