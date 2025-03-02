@@ -211,12 +211,10 @@ img {
 	height: auto;
 }
 
-// Коррекция для кликабельных элементов с указанной ролью в iOS
 [role="button"] {
 	cursor: pointer;
 }
 
-// Мы любим Сафари.
 [type="search"]::-webkit-search-decoration {
 	-webkit-appearance: none;
 }
@@ -230,21 +228,21 @@ input,
 label,
 select,
 textarea {
-	margin: 0;                  // Убираем margin в Firefox и Safari
-	touch-action: manipulation; // Стилевая коррекция 300ms задержки (для поддерживающих браузеров)
+	margin: 0;
+	touch-action: manipulation;
 }
 
 button,
 input {
-	overflow: visible;    // Покажем торчащее в Edge
-	text-transform: none; // Уберём наследование text transform в Firefox
+	overflow: visible;
+	text-transform: none;
 }
 
 button,
 html [type="button"],
 [type="reset"],
 [type="submit"] {
-	-webkit-appearance: button; // Коррекция проблем стилизации для Safari
+	-webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
@@ -259,22 +257,16 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
-	-webkit-appearance: listbox; // Коррекция для Mobile Safari (https://github.com/twbs/bootstrap/issues/11266)
+	-webkit-appearance: listbox;
 }
-
-textarea {
-	overflow: auto;   // Удаление верт. скролла в IE.
-	resize: vertical; // Правильное изменение размеров
-}
-
 svg {
 	&:not(:root) {
-		overflow: hidden; // Скрыть выступающее за границы в IE
+		overflow: hidden;
 	}
 
 	a &,
 	button & {
-		pointer-events: none; // Мы любим Edge, это браузер! (почти)
+		pointer-events: none;
 	}
 }
 
@@ -304,8 +296,6 @@ p,
 ol,
 dl,
 table,
-blockquote,
-pre,
 address {
 	margin-top: 0;
 	margin-bottom: 1em;
@@ -339,24 +329,24 @@ dd {
 	margin-left: 0;
 }
 
-::-webkit-scrollbar { /* 1 - скроллбар */
+::-webkit-scrollbar {
 	width: 4px;
 	height: 4px;
 }
 
-::-webkit-scrollbar-button { /* 2 - кнопка */
+::-webkit-scrollbar-button {
 	border-radius: 8px;
 }
 
-::-webkit-scrollbar-track { /* 3 - трек */
+::-webkit-scrollbar-track {
 	background-color: #fff;
 }
 
-::-webkit-scrollbar-track-piece { /* 4 - видимая часть трека */
+::-webkit-scrollbar-track-piece {
 	background-color: var(--color-bg-dark);
 }
 
-::-webkit-scrollbar-thumb { /* 5 - ползунок */
+::-webkit-scrollbar-thumb {
 	border-radius: 8px;
 	background-color: var(--color-main);
 }
