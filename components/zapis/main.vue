@@ -35,29 +35,29 @@ const minDate = new CalendarDate(yesterday.year, yesterday.month, yesterday.day)
 const maxDate = new CalendarDate(weekTwo.year, weekTwo.month, weekTwo.day)
 
 const timeOptions = ref([]);
-const vaccine = ref({
-	name: 'Мясников Игорь Ю',
-	tel: '+7(988)259-92-49',
-	oms: '6149700847000159',
-	email: 'igorpilium@gmail.com',
+const zapis = ref({
+	name: '',
+	tel: '',
+	oms: '',
+	email: '',
 	doctor: 'Турбеева Елизавета Андреевна',
 	selectedTime: '',
 	selectedDate: new Date(modelValue.value)
 })
 
 const isNameValid = computed(() => {
-	return vaccine.value.name.length > 0 ? nameRE.test(vaccine.value.name) : false;
+	return zapis.value.name.length > 0 ? nameRE.test(zapis.value.name) : false;
 })
 const isMailValid = computed(() => {
-	return vaccine.value.email.length > 0 ? emailRE.test(vaccine.value.email) : false;
+	return zapis.value.email.length > 0 ? emailRE.test(zapis.value.email) : false;
 })
 const isTelValid = computed(() => {
-	return vaccine.value.tel.length > 10 ? telRE.test(vaccine.value.tel) : false;
+	return zapis.value.tel.length > 10 ? telRE.test(zapis.value.tel) : false;
 })
 
 const isOmsValid = computed(() => {
-	if (vaccine.value.oms.length === 16 && (/^[0-9]+$/).test(+vaccine.value.oms)) {
-		if (checkOMSNumber(vaccine.value.oms))  {
+	if (zapis.value.oms.length === 16 && (/^[0-9]+$/).test(+zapis.value.oms)) {
+		if (checkOMSNumber(zapis.value.oms))  {
 			return true;
 		}
 	}
@@ -66,7 +66,7 @@ const isOmsValid = computed(() => {
 })
 
 const isDopValid = computed(() => {
-	return vaccine.value.doctor && vaccine.value.selectedTime && vaccine.value.selectedDate;
+	return zapis.value.doctor && zapis.value.selectedTime && zapis.value.selectedDate;
 })
 
 const isFormValid = computed(() => {
@@ -81,17 +81,17 @@ const updateTimeOptions = () => {
 		return days[date.getDay()];
     };
 
-	const selected = new Date(vaccine.value.selectedDate);
+	const selected = new Date(zapis.value.selectedDate);
 
 	const selectedDoctor = uniqueArray.find(
 		(item) => {
-			return item.name === vaccine.value.doctor
+			return item.name === zapis.value.doctor
 		}
 	);
 
 	if (!selectedDoctor) {
 		timeOptions.value = [];
-		vaccine.value.selectedTime = '';
+		zapis.value.selectedTime = '';
 		showToast('Врач не найден','Пожалуйстав выберите другого врача', 'error' )
 		return;
 	}
@@ -104,21 +104,21 @@ const updateTimeOptions = () => {
 	const dayS = selectedDoctor.days[dayOfWeek];
 	if (dayS === "нет приема" || dayS === "Выходной") {
 		timeOptions.value = [];
-		vaccine.value.selectedTime = '';
+		zapis.value.selectedTime = '';
 		showToast('Нет приема','У этого врача нет приема в выбранный день', 'error' )
 		return;
 	}
 
 	if (dayS === "нет приема") {
 		timeOptions.value = [];
-		vaccine.value.selectedTime = '';
+		zapis.value.selectedTime = '';
 		showToast('Нет приема','У этого врача нет приема в выбранный день', 'error' )
 		return;
 	}
 
 	if (dayS === "Выходной") {
 		timeOptions.value = [];
-		vaccine.value.selectedTime = '';
+		zapis.value.selectedTime = '';
 		showToast('Выходной','Наши врачи не работают в выходные дни', 'error' )
 		return;
 	}
@@ -142,7 +142,7 @@ const updateTimeOptions = () => {
 
 		if (currentHour > endHour || (currentHour === endHour && currentMinute >= endMinute)) {
 			timeOptions.value = [];
-			vaccine.value.selectedTime = '';
+			zapis.value.selectedTime = '';
 			return;
 		}
 
@@ -153,7 +153,7 @@ const updateTimeOptions = () => {
 			for (let minute = hour === currentHour ? currentMinute : 0; minute < 60; minute += 30) {
 				if (hour === endHour && minute >= endMinute) break;
 				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-				const isBooked = isTimeBooked(vaccine.value.doctor, selected, timeString);
+				const isBooked = isTimeBooked(zapis.value.doctor, selected, timeString);
 				timeOptions.value.push({ time: timeString, disabled: isBooked });
 			}
 		}
@@ -164,7 +164,7 @@ const updateTimeOptions = () => {
 			for (let minute = 0; minute < 60; minute += 30) {
 				if (hour === endHour && minute >= 30) break;
 				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-				const isBooked = isTimeBooked(vaccine.value.doctor, selected, timeString);
+				const isBooked = isTimeBooked(zapis.value.doctor, selected, timeString);
 				timeOptions.value.push({ time: timeString, disabled: isBooked });
 			}
 		}
@@ -175,7 +175,7 @@ watch(() => modelValue.value, () => {
 });
 
 watch(() => modelValue.value, (newValue) => {
-  vaccine.value.selectedDate = new Date(newValue);
+  zapis.value.selectedDate = new Date(newValue);
   updateTimeOptions();
 });
 
@@ -192,7 +192,7 @@ function onSubmit() {
 }
 const resetForm = () => {
 	isResetting = true;
-	vaccine.value = {
+	zapis.value = {
 		name: '',
 		tel: '',
 		oms: '',
@@ -203,7 +203,7 @@ const resetForm = () => {
 	};
 	modelValue.value = new CalendarDate(today.year, today.month, today.day);
 	timeOptions.value = [];
-	vaccine.value.selectedTime = '';
+	zapis.value.selectedTime = '';
 	showToast('Форма очищена', 'Все поля формы были сброшены.', 'success');
 	isResetting = false;
 };
@@ -211,7 +211,7 @@ const resetForm = () => {
 onMounted(() => {
 	toLocalStorage = () =>  {
 
-		const formData = vaccine.value
+		const formData = zapis.value
 		const formDataString = JSON.stringify(formData);
 		const existingData = localStorage.getItem('formData');
 
@@ -247,7 +247,7 @@ onMounted(() => {
 								input#fio.input-text__input(
 									type="text"
 									name="fio"
-									v-model="vaccine.name"
+									v-model="zapis.name"
 									aria-describedby="fiohelp"
 									placeholder="Иванов Иван"
 									required="required"
@@ -261,7 +261,7 @@ onMounted(() => {
 							input#tel.input-text__input(
 							type="text",
 							name="tel",
-							v-model="vaccine.tel",
+							v-model="zapis.tel",
 							aria-describedby="telhelp",
 							placeholder="+7(999) 999-99-99",
 							required="required"
@@ -279,7 +279,7 @@ onMounted(() => {
 							input#oms.input-text__input(
 								type="text",
 								name="oms",
-								v-model="vaccine.oms",
+								v-model="zapis.oms",
 								aria-describedby="omshelp",
 								placeholder="XXXXXXXXXXXXXXXX",
 								required="required"
@@ -295,7 +295,7 @@ onMounted(() => {
 							input#mail.input-text__input(,
 							type="text",
 							name="mail",
-							v-model="vaccine.email",
+							v-model="zapis.email",
 							aria-describedby="mailhelp",
 							placeholder="sample@mail.ru",
 							required="required",
@@ -313,7 +313,7 @@ onMounted(() => {
 					label.input-text__label(for="select-doctor") Выберите врача
 						strong.input-text__required *
 					.select
-						select#select-doctor.input-text__input(v-model="vaccine.doctor" required @change="updateTimeOptions()")
+						select#select-doctor.input-text__input(v-model="zapis.doctor" required @change="updateTimeOptions()")
 							option(v-for="doctor, index in uniqueArray" :key="index" :value='doctor.name') {{ doctor.name }}
 						.select__arrow
 			.fieldset__wrapper
@@ -329,7 +329,7 @@ onMounted(() => {
 						label.input-text__label(for="select-time") Выберите время
 							strong.input-text__required *
 						.select
-							select#select-time.input-text__input(v-model="vaccine.selectedTime" required :disabled="timeOptions.length === 0")
+							select#select-time.input-text__input(v-model="zapis.selectedTime" required :disabled="timeOptions.length === 0")
 								option(v-if="timeOptions.length === 0", disabled, value="") Нет доступного времени
 								// option(v-for="time in timeOptions" :key="time" :value="time") {{ time }}
 								option(
