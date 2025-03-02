@@ -49,46 +49,6 @@ section.section.section--banner
 					a.link(href="tel:88639470722") +7 (86394) 7-07-22
 			.banner__links.fc
 				nuxt-link.link.link--underline(to="/patient/orvi") Перейти
-	.banner
-		.panel.panel--zdorovo.banner__inner.f
-			//- h2.banner__title Запись на вакцинацию Covid-19
-			//- .vaccineMain
-			//- 	p
-			//- 		b Поликлиника
-			//- 		i  cт. Романовская, пер. Союзный 97а
-			//- 	p ПН-ПТ - с 08:00 до 20:00
-			//- 	p СБ,ВС - с 08:00 до 13:00
-			//- 	p По телефону 8 (86394) 7-07-22
-			//- 	p
-			//- 		b Врачебная амбулатория
-			//- 		i  х.Рябичев, ул. Юбилейная д.52
-			//- 	p ПН-ПТ - с 08:00 до 16:00
-			//- 	p По телефону 8 (86394) 7-47-80
-			//- 	a.btn.btn--bg-main(href="https://www.gosuslugi.ru/category/health" rel="noopener noreferrer" target="blanc") Запись через гос услуги
-			//- h2.banner__title Вместе против коррупции!
-			//- p В настоящее время Генеральной прокуратурой проводится Международный молодежный конкурс социальной антикоррупционной рекламы на тему: «Вместе против коррупции!».
-			//- p С правилами проведения конкурса можно ознакомиться на официальном сайте конкурса
-			//- 	a.link.link--underline(href="ttps://www.anticorruption.life" target="_blank")  https://www.anticorruption.life.
-			//- p Прием работ осуществляется с 01.05.2024 по 01.10.2024 на официальном сайте конкурса по трем номинациям – «лучший плакат», «лучший видеоролик», «лучший рисунок».
-		//- 	.panel__content
-		//- 		h2.banner__title Официальный портал Минздрава России о
-		//- 			span  Вашем
-		//- 			|
-		//- 			| здоровье
-		//- 		a.btn.btn--bg-main(
-		//- 			href="https://www.takzdorovo.ru/",
-		//- 			rel="noopener noreferrer",
-		//- 			target="blanc"
-		//- 		) Перейти на сайт портала
-		//- 	.panel__bg
-		//- 		figure
-		//- 			//- <img class="contacts__img" src="media/dokterBG.avif" alt="Баннер национального проекта здравоохранения"/>
-		//- 			<img class="contacts__img" src="media/dokterBGa.avif" alt="Баннер национального проекта здравоохранения"/>
-		//- 			figcaption.hide-text Баннер портала Минздрава России о Вашем здоровье
-		//- .panel.banner__inner.f.fdc
-		//- 	figure
-		//- 		<img class="contacts__img" src="media/pamyatka.png" alt="Памятка о телефонах горячей линий РОСЗДРАВНАДЗОРА"/>
-		//- 		figcaption.hide-text Памятка о телефонах горячей линий РОСЗДРАВНАДЗОРА
 </template>
 
 <style lang="scss">
