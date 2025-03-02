@@ -1,5 +1,16 @@
 <script setup>
 import { CalendarDate, DateFormatter, now, isWeekend, getLocalTimeZone } from '@internationalized/date'
+import { telRE, nameRE, emailRE, checkOMSNumber } from '@/utils/validation';
+import { isTimeBooked } from '~/utils/storage';
+const toast = useToast()
+
+function showToast(title, description, type) {
+	toast.add({
+		title: title,
+		description: description,
+		color: type
+	})
+}
 
 const { data: schedules } = await useAsyncData(() => queryCollection('schedule').first())
 const uniqueArray = [...new Map(schedules.value.data.map(item => [item.name, item])).values()];
@@ -7,11 +18,10 @@ const uniqueArray = [...new Map(schedules.value.data.map(item => [item.name, ite
 let toLocalStorage = null;
 let isResetting = false;
 
-const toast = useToast()
-
 const df = new DateFormatter('ru-RU', {
   dateStyle: 'medium'
 })
+
 const today = now()
 const yesterday = today.subtract({days: 1});
 const weekTwo = today.add({weeks: 2})
@@ -24,10 +34,6 @@ const modelValue = shallowRef(new CalendarDate(today.year, today.month, today.da
 const minDate = new CalendarDate(yesterday.year, yesterday.month, yesterday.day)
 const maxDate = new CalendarDate(weekTwo.year, weekTwo.month, weekTwo.day)
 
-const telRE = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
-const nameRE = /[А-Я][а-я]+\s+[А-Я][а-я]+\s+?[А-Я][а-я]?/;
-const emailRE = /^((\w[^\W]+)[.-:]?){1,}@(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 const timeOptions = ref([]);
 const vaccine = ref({
 	name: 'Мясников Игорь Ю',
@@ -38,6 +44,7 @@ const vaccine = ref({
 	selectedTime: '',
 	selectedDate: new Date(modelValue.value)
 })
+
 const isNameValid = computed(() => {
 	return vaccine.value.name.length > 0 ? nameRE.test(vaccine.value.name) : false;
 })
@@ -66,44 +73,6 @@ const isFormValid = computed(() => {
 	const rules = [isNameValid.value, isMailValid.value, isTelValid.value, isOmsValid.value, isDopValid.value];
 	return rules.every((item) => item);
 })
-
-function checkOMSNumber(omsNumber) {
-	const sNum = `${omsNumber}`.trim();
-
-	if (sNum.length !== 16) {
-		return false;
-	}
-
-	const arrOdd = [];
-	const arrEven = [];
-	const controlNum = parseInt(sNum.slice(-1), 10);
-
-	for (let i = sNum.length - 2; i >= 0; i -= 2) {
-		arrOdd.push(sNum[i] * 2);
-	}
-
-	for (let j = sNum.length - 3; j >= 0; j -= 2) {
-		arrEven.push(sNum[j] * 1);
-	}
-
-	const arr2 = arrEven.join('') + arrOdd.join('');
-	const arrSum = parseInt(Array.from(`${arr2}`).reduce((acc, item) => acc + parseInt(item, 10), 0), 10);
-
-	let lastNumber = `${arrSum}`.slice(-1);
-
-	lastNumber = +lastNumber;
-	const controlNumResult = lastNumber === 0 ? lastNumber : 10 - lastNumber;
-
-	return controlNum === controlNumResult;
-}
-
-function showToast(title, description, type) {
-toast.add({
-	title: title,
-	description: description,
-	color: type
-})
-}
 
 const updateTimeOptions = () => {
 	if (isResetting) return;
@@ -237,23 +206,6 @@ const resetForm = () => {
 	vaccine.value.selectedTime = '';
 	showToast('Форма очищена', 'Все поля формы были сброшены.', 'success');
 	isResetting = false;
-};
-const getBookedTimes = () => {
-  const existingData = localStorage.getItem('formData');
-
-  if (existingData) {
-    return JSON.parse(existingData);
-  }
-  return [];
-};
-const isTimeBooked = (doctor, date, time) => {
-  const bookedTimes = getBookedTimes();
-  return bookedTimes.some(
-    (booking) =>
-      booking.doctor === doctor &&
-      new Date(booking.selectedDate).toDateString() === date.toDateString() &&
-      booking.selectedTime === time
-  );
 };
 
 onMounted(() => {
