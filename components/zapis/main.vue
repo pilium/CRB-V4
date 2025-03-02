@@ -1,10 +1,10 @@
 <script setup>
-import { CalendarDate, DateFormatter, now, getLocalTimeZone } from '@internationalized/date'
+import { CalendarDate, DateFormatter, now, isWeekend, getLocalTimeZone } from '@internationalized/date'
 
 const { data: schedules } = await useAsyncData(() => queryCollection('schedule').first())
 const uniqueArray = [...new Map(schedules.value.data.map(item => [item.name, item])).values()];
-console.log(schedules.value.data[0].days);
 
+let toLocalStorage = null;
 
 const toast = useToast()
 
@@ -14,6 +14,10 @@ const df = new DateFormatter('ru-RU', {
 const today = now()
 const yesterday = today.subtract({days: 1});
 const weekTwo = today.add({weeks: 2})
+
+const isDateDisabled = (today) => {
+	return isWeekend(today, 'ru-RU');
+};
 
 const modelValue = shallowRef(new CalendarDate(today.year, today.month, today.day));
 const minDate = new CalendarDate(yesterday.year, yesterday.month, yesterday.day)
@@ -29,11 +33,11 @@ let formSuccess = ref(false);
 // ]
 const timeOptions = ref([]);
 let vaccine = ref({
-	name: '',
-	tel: '',
-	oms: '',
-	email: '',
-	doctor: '',
+	name: 'Мясников Игорь Ю',
+	tel: '+7(988)259-92-49',
+	oms: '6149700847000159',
+	email: 'igorpilium@gmail.com',
+	doctor: 'Турбеева Елизавета Андреевна',
 	selectedTime: '',
 	selectedDate: new Date(modelValue.value)
 })
@@ -96,9 +100,6 @@ function checkOMSNumber(omsNumber) {
 	return controlNum === controlNumResult;
 }
 
-
-let toLocalStorage = null;
-
 function showToast(title, description, type) {
 toast.add({
 	title: title,
@@ -108,14 +109,56 @@ toast.add({
 }
 
 const updateTimeOptions = () => {
-	const now = new Date();
+	const getDayOfWeek = (date) => {
+		const days = ["su", "mn", "tu", "wd", "th", "fr", "st"];
+		return days[date.getDay()];
+    };
+
 	const selected = new Date(vaccine.value.selectedDate);
 
+	const selectedDoctor = uniqueArray.find(
+		(item) => {
+			return item.name === vaccine.value.doctor
+		}
+	);
+
+	if (!selectedDoctor) {
+		timeOptions.value = [];
+		showToast('Врач не найден','Пожалуйстав выберите другого врача', 'error' )
+		return;
+	}
+
+	let dayOfWeek = getDayOfWeek(selected);
+	if (dayOfWeek === 'su') {
+		dayOfWeek = 'mn'
+	}
+
+	const dayS = selectedDoctor.days[dayOfWeek];
+	if (dayS === "нет приема" || dayS === "Выходной") {
+		timeOptions.value = [];
+		showToast('Нет приема','У этого врача нет приема в выбранный день', 'warning' )
+		return;
+	}
+
+	if (dayS === "нет приема") {
+		timeOptions.value = [];
+		showToast('Нет приема','У этого врача нет приема в выбранный день', 'warning' )
+		return;
+	}
+
+	if (dayS === "Выходной") {
+		timeOptions.value = [];
+		showToast('Выходной','Наши врачи не работают в выходные дни', 'warning' )
+		return;
+	}
+
+	const [startTime, endTime] = dayS.split(" - ");
+	const [startHour, startMinute] = startTime.split(":").map(Number);
+	const [endHour, endMinute] = endTime.split(":").map(Number);
 
 	timeOptions.value = [];
-
+	const now = new Date();
 	if (selected.toDateString() === now.toDateString()) {
-
 		let currentHour = now.getHours();
 		let currentMinute = now.getMinutes();
 
@@ -126,31 +169,35 @@ const updateTimeOptions = () => {
 			currentMinute = 30;
 		}
 
-		const startHour = 8;
-        const endHour = 18;
+		if (currentHour > endHour || (currentHour === endHour && currentMinute >= endMinute)) {
+			showToast('Запись на сегодня уже закрыта','Пожалуйста выберите другую дату для записи', 'warning' )
+			return;
+		}
+
 
 		for (let hour = currentHour; hour <= endHour; hour++) {
 			if (hour < startHour) continue;
 
 			for (let minute = hour === currentHour ? currentMinute : 0; minute < 60; minute += 30) {
-				if (hour === endHour && minute >= 30) break;
+				if (hour === endHour && minute >= endMinute) break;
 				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
 				timeOptions.value.push(timeString);
 			}
 		}
 
-	} else {
+		} else {
 
-	for (let hour = startHour; hour <= endHour; hour++) {
-		for (let minute = 0; minute < 60; minute += 30) {
-			if (hour === endHour && minute >= 30) break;
-			const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-			timeOptions.value.push(timeString);
+		for (let hour = startHour; hour <= endHour; hour++) {
+			for (let minute = 0; minute < 60; minute += 30) {
+				if (hour === endHour && minute >= 30) break;
+				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+				timeOptions.value.push(timeString);
+			}
 		}
 	}
+
 }
-}
-watch(() => vaccine.value.selectedDate, updateTimeOptions);
+watchEffect(() => modelValue, updateTimeOptions());
 
 function onSubmit() {
 	if (isFormValid.value) {
@@ -164,7 +211,6 @@ function onSubmit() {
 }
 
 onMounted(() => {
-	updateTimeOptions()
 	toLocalStorage = () =>  {
 
 		const formData = vaccine.value
@@ -268,8 +314,8 @@ onMounted(() => {
 					label.input-text__label(for="select-doctor") Выберите врача
 						strong.input-text__required *
 					.select
-						select#select-doctor.input-text__input(v-model="vaccine.doctor" required)
-							option(v-for="doctor, index in uniqueArray" :value='doctor.name') {{ doctor.name }}
+						select#select-doctor.input-text__input(v-model="vaccine.doctor" required @change="updateTimeOptions()")
+							option(v-for="doctor, index in uniqueArray" :key="index" :value='doctor.name') {{ doctor.name }}
 						.select__arrow
 			.fieldset__wrapper
 				.input-wrap.f
@@ -279,7 +325,7 @@ onMounted(() => {
 						UPopover
 							UButton#select-date(color="neutral" variant="subtle" icon="i-lucide-calendar") {{ modelValue ? df.format(modelValue.toDate(getLocalTimeZone())) : 'Выберите дату' }}
 							template(#content)
-								UCalendar(v-model="modelValue" :min-value="minDate" :max-value="maxDate"  class="p-2")
+								UCalendar(v-model="modelValue" :is-date-disabled="isDateDisabled" :min-value="minDate" :max-value="maxDate" @change="updateTimeOptions()" class="p-2")
 					.input-text
 						label.input-text__label(for="select-doctor") Выберите время
 							strong.input-text__required *
