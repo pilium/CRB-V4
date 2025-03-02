@@ -1,7 +1,7 @@
 <template lang="pug">
 	article.posts.f.fdc(:class="{ 'posts--full': full }")
 		header.posts__header
-			<NuxtImg loading="lazy" class="posts__img" :src="posts.meta.img" :alt="posts.meta.alt"/>
+			<img loading="lazy" class="posts__img" :src="posts.meta.img" :alt="posts.meta.alt"/>
 		NuxtLink.posts__content(title="Перейти к посту" rel="noopener noreferrer" target="blanc" :to="posts.path")
 			.posts__category.f.fdc
 				.posts__category-info

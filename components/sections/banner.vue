@@ -70,25 +70,25 @@ section.section.section--banner
 			//- p С правилами проведения конкурса можно ознакомиться на официальном сайте конкурса
 			//- 	a.link.link--underline(href="ttps://www.anticorruption.life" target="_blank")  https://www.anticorruption.life.
 			//- p Прием работ осуществляется с 01.05.2024 по 01.10.2024 на официальном сайте конкурса по трем номинациям – «лучший плакат», «лучший видеоролик», «лучший рисунок».
-			.panel__content
-				h2.banner__title Официальный портал Минздрава России о
-					span  Вашем
-					|
-					| здоровье
-				a.btn.btn--bg-main(
-					href="https://www.takzdorovo.ru/",
-					rel="noopener noreferrer",
-					target="blanc"
-				) Перейти на сайт портала
-			.panel__bg
-				figure
-					//- <NuxtImg class="contacts__img" src="media/dokterBG.avif" alt="Баннер национального проекта здравоохранения"/>
-					<NuxtImg class="contacts__img" src="media/dokterBGa.avif" alt="Баннер национального проекта здравоохранения"/>
-					figcaption.hide-text Баннер портала Минздрава России о Вашем здоровье
-		.panel.banner__inner.f.fdc
-			figure
-				<NuxtImg class="contacts__img" src="media/pamyatka.png" alt="Памятка о телефонах горячей линий РОСЗДРАВНАДЗОРА"/>
-				figcaption.hide-text Памятка о телефонах горячей линий РОСЗДРАВНАДЗОРА
+		//- 	.panel__content
+		//- 		h2.banner__title Официальный портал Минздрава России о
+		//- 			span  Вашем
+		//- 			|
+		//- 			| здоровье
+		//- 		a.btn.btn--bg-main(
+		//- 			href="https://www.takzdorovo.ru/",
+		//- 			rel="noopener noreferrer",
+		//- 			target="blanc"
+		//- 		) Перейти на сайт портала
+		//- 	.panel__bg
+		//- 		figure
+		//- 			//- <img class="contacts__img" src="media/dokterBG.avif" alt="Баннер национального проекта здравоохранения"/>
+		//- 			<img class="contacts__img" src="media/dokterBGa.avif" alt="Баннер национального проекта здравоохранения"/>
+		//- 			figcaption.hide-text Баннер портала Минздрава России о Вашем здоровье
+		//- .panel.banner__inner.f.fdc
+		//- 	figure
+		//- 		<img class="contacts__img" src="media/pamyatka.png" alt="Памятка о телефонах горячей линий РОСЗДРАВНАДЗОРА"/>
+		//- 		figcaption.hide-text Памятка о телефонах горячей линий РОСЗДРАВНАДЗОРА
 </template>
 
 <style lang="scss">

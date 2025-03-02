@@ -5,27 +5,27 @@
 				.contacts__item
 					a.contacts__banner(href="https://www.bus.gov.ru/pub/info-card/17074" target="blanc" rel="noopener")
 						figure
-							<NuxtImg loading="lazy" class="contacts__img" src="media/busgov-jpg.jpg" alt="Официальный сайт для размещения информации о государственных учреждениях"/>
+							<img loading="lazy" class="contacts__img" src="media/busgov-jpg.jpg" alt="Официальный сайт для размещения информации о государственных учреждениях"/>
 							figcaption.hide-text Официальный сайт для размещения информации о государственных (муниципальных) учреждениях
 				.contacts__item
 					a.contacts__banner(href="https://www.gosuslugi.ru/category/health" target="blanc" rel="noopener")
 						figure
-							<NuxtImg loading="lazy" class="contacts__img" src="media/moezdorovie-jpg.jpg" alt="Госуслуги - мое здоровье"/>
+							<img loading="lazy" class="contacts__img" src="media/moezdorovie-jpg.jpg" alt="Госуслуги - мое здоровье"/>
 							figcaption.hide-text Официальный сайт для размещения информации о государственных (муниципальных) учреждениях
 				.contacts__item
 					nuxt-link(to="/hospital/nacProject")
 						figure
-							<NuxtImg loading="lazy" class="contacts__img" src="media/banner-nac.jpg" alt="Баннер национального проекта здравоохранения"/>
+							<img loading="lazy" class="contacts__img" src="media/banner-nac.jpg" alt="Баннер национального проекта здравоохранения"/>
 							figcaption.hide-text Баннер национального проекта здравоохранения
 				.contacts__item
 					a(href="https://rostovmarket.rts-tender.ru/?fl=True" targer="_blank")
 						figure
-							<NuxtImg loading="lazy" class="contacts__img" src="media/banner.png" alt="Баннер закупок Ростовской области"/>
+							<img loading="lazy" class="contacts__img" src="media/banner.png" alt="Баннер закупок Ростовской области"/>
 							figcaption.hide-text Баннер закупок Ростовской области
 				.contacts__item
 					a(href="http://anketa.rosminzdrav.ru/staticogvjustank/61/1" target="_blank")
 						figure
-							<NuxtImg loading="lazy" class="contacts__img" src="media/nok.jpg" alt="Независимая оценка качества"/>
+							<img loading="lazy" class="contacts__img" src="media/nok.jpg" alt="Независимая оценка качества"/>
 							figcaption.hide-text Независимая оценка качества
 					//- <NocBanner/>
 </template>

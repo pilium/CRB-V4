@@ -1,7 +1,7 @@
 <template lang="pug">
 	nuxt-link.logo(to="/" aria-label="Логотип и ссылка на главную страницу сайта")
 		figure.logo__figure
-			NuxtImg.logo__img(src="/media/e.svg" alt="Логотип больницы" width="90" height="90")
+			img.logo__img(src="/media/e.svg" alt="Логотип больницы" width="90" height="90")
 			figcaption.logo__text= 'Основана в 1983 году'
 </template>
 
