@@ -184,9 +184,8 @@ const updateTimeOptions = () => {
 			for (let minute = hour === currentHour ? currentMinute : 0; minute < 60; minute += 30) {
 				if (hour === endHour && minute >= endMinute) break;
 				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-				if (!isTimeBooked(vaccine.value.doctor, selected, timeString)) {
-					timeOptions.value.push(timeString);
-				}
+				const isBooked = isTimeBooked(vaccine.value.doctor, selected, timeString);
+				timeOptions.value.push({ time: timeString, disabled: isBooked });
 			}
 		}
 
@@ -196,9 +195,8 @@ const updateTimeOptions = () => {
 			for (let minute = 0; minute < 60; minute += 30) {
 				if (hour === endHour && minute >= 30) break;
 				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-				if (!isTimeBooked(vaccine.value.doctor, selected, timeString)) {
-					timeOptions.value.push(timeString);
-				}
+				const isBooked = isTimeBooked(vaccine.value.doctor, selected, timeString);
+				timeOptions.value.push({ time: timeString, disabled: isBooked });
 			}
 		}
 	}
@@ -242,8 +240,6 @@ const resetForm = () => {
 };
 const getBookedTimes = () => {
   const existingData = localStorage.getItem('formData');
-
-  console.log(existingData);
 
   if (existingData) {
     return JSON.parse(existingData);
@@ -383,8 +379,13 @@ onMounted(() => {
 						.select
 							select#select-time.input-text__input(v-model="vaccine.selectedTime" required :disabled="timeOptions.length === 0")
 								option(v-if="timeOptions.length === 0", disabled, value="") Нет доступного времени
-								option(v-for="time in timeOptions" :key="time" :value="time") {{ time }}
-								option(v-if="timeOptions.length === 0" disabled value="") Нет доступного времени
+								// option(v-for="time in timeOptions" :key="time" :value="time") {{ time }}
+								option(
+									v-for="slot in timeOptions",
+									:key="slot.time",
+									:value="slot.time",
+									:disabled="slot.disabled"
+								) {{ slot.time }} {{ slot.disabled ? '(занято)' : '' }}
 							.select__arrow
 	.form__footer
 		.form__footer-btn
@@ -433,6 +434,11 @@ onMounted(() => {
 		option {
 			font-size: 1.2rem;
 			color: var(--color-modal);
+
+			&:disabled {
+				color: #999;
+				background-color: #f5f5f5;
+			}
 		}
 
 		&::-ms-expand { display: none; }
