@@ -126,17 +126,24 @@ const updateTimeOptions = () => {
 			currentMinute = 30;
 		}
 
-		for (let hour = currentHour; hour < 18; hour++) {
+		const startHour = 8;
+        const endHour = 18;
+
+		for (let hour = currentHour; hour <= endHour; hour++) {
+			if (hour < startHour) continue;
+
 			for (let minute = hour === currentHour ? currentMinute : 0; minute < 60; minute += 30) {
-			const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-			timeOptions.value.push(timeString);
+				if (hour === endHour && minute >= 30) break;
+				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+				timeOptions.value.push(timeString);
 			}
 		}
 
 	} else {
-	// Если дата не сегодня, начинаем с 00:00
-	for (let hour = 0; hour < 18; hour++) {
+
+	for (let hour = startHour; hour <= endHour; hour++) {
 		for (let minute = 0; minute < 60; minute += 30) {
+			if (hour === endHour && minute >= 30) break;
 			const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
 			timeOptions.value.push(timeString);
 		}
