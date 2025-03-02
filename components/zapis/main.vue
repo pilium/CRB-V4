@@ -5,6 +5,7 @@ const { data: schedules } = await useAsyncData(() => queryCollection('schedule')
 const uniqueArray = [...new Map(schedules.value.data.map(item => [item.name, item])).values()];
 
 let toLocalStorage = null;
+let isResetting = false;
 
 const toast = useToast()
 
@@ -27,12 +28,8 @@ const telRE = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
 const nameRE = /[А-Я][а-я]+\s+[А-Я][а-я]+\s+?[А-Я][а-я]?/;
 const emailRE = /^((\w[^\W]+)[.-:]?){1,}@(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-let formSuccess = ref(false);
-// const time = [
-// 	'08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00'
-// ]
 const timeOptions = ref([]);
-let vaccine = ref({
+const vaccine = ref({
 	name: 'Мясников Игорь Ю',
 	tel: '+7(988)259-92-49',
 	oms: '6149700847000159',
@@ -109,6 +106,7 @@ toast.add({
 }
 
 const updateTimeOptions = () => {
+	if (isResetting) return;
 	const getDayOfWeek = (date) => {
 		const days = ["su", "mn", "tu", "wd", "th", "fr", "st"];
 		return days[date.getDay()];
@@ -124,6 +122,7 @@ const updateTimeOptions = () => {
 
 	if (!selectedDoctor) {
 		timeOptions.value = [];
+		vaccine.value.selectedTime = '';
 		showToast('Врач не найден','Пожалуйстав выберите другого врача', 'error' )
 		return;
 	}
@@ -136,19 +135,22 @@ const updateTimeOptions = () => {
 	const dayS = selectedDoctor.days[dayOfWeek];
 	if (dayS === "нет приема" || dayS === "Выходной") {
 		timeOptions.value = [];
-		showToast('Нет приема','У этого врача нет приема в выбранный день', 'warning' )
+		vaccine.value.selectedTime = '';
+		showToast('Нет приема','У этого врача нет приема в выбранный день', 'error' )
 		return;
 	}
 
 	if (dayS === "нет приема") {
 		timeOptions.value = [];
-		showToast('Нет приема','У этого врача нет приема в выбранный день', 'warning' )
+		vaccine.value.selectedTime = '';
+		showToast('Нет приема','У этого врача нет приема в выбранный день', 'error' )
 		return;
 	}
 
 	if (dayS === "Выходной") {
 		timeOptions.value = [];
-		showToast('Выходной','Наши врачи не работают в выходные дни', 'warning' )
+		vaccine.value.selectedTime = '';
+		showToast('Выходной','Наши врачи не работают в выходные дни', 'error' )
 		return;
 	}
 
@@ -170,7 +172,8 @@ const updateTimeOptions = () => {
 		}
 
 		if (currentHour > endHour || (currentHour === endHour && currentMinute >= endMinute)) {
-			showToast('Запись на сегодня уже закрыта','Пожалуйста выберите другую дату для записи', 'warning' )
+			timeOptions.value = [];
+			vaccine.value.selectedTime = '';
 			return;
 		}
 
@@ -195,21 +198,44 @@ const updateTimeOptions = () => {
 			}
 		}
 	}
-
 }
-watchEffect(() => modelValue, updateTimeOptions());
+watch(() => modelValue.value, () => {
+  updateTimeOptions();
+});
+
+watch(() => modelValue.value, (newValue) => {
+  vaccine.value.selectedDate = new Date(newValue);
+  updateTimeOptions();
+});
 
 function onSubmit() {
 	if (isFormValid.value) {
 		const OK = toLocalStorage()
 		if(OK) {
+			resetForm()
 			showToast('Запись успешна', 'Данные о записи успешно приняты', 'sucsess')
 		}
 	} else {
 		showToast('Ошибка при отправке', 'Проверьте корректность внесенных данных', 'error')
 	}
 }
-
+const resetForm = () => {
+	isResetting = true;
+	vaccine.value = {
+		name: '',
+		tel: '',
+		oms: '',
+		email: '',
+		doctor: 'Турбеева Елизавета Андреевна',
+		selectedTime: '',
+		selectedDate: new Date(modelValue.value), // Сбрасываем на текущую дату
+	};
+	modelValue.value = new CalendarDate(today.year, today.month, today.day);
+	timeOptions.value = [];
+	vaccine.value.selectedTime = '';
+	showToast('Форма очищена', 'Все поля формы были сброшены.', 'success');
+	isResetting = false;
+};
 onMounted(() => {
 	toLocalStorage = () =>  {
 
@@ -233,6 +259,7 @@ onMounted(() => {
 			return true
 		}
 	}
+	updateTimeOptions();
 });
 </script>
 <template lang="pug">
@@ -325,19 +352,23 @@ onMounted(() => {
 						UPopover
 							UButton#select-date(color="neutral" variant="subtle" icon="i-lucide-calendar") {{ modelValue ? df.format(modelValue.toDate(getLocalTimeZone())) : 'Выберите дату' }}
 							template(#content)
-								UCalendar(v-model="modelValue" :is-date-disabled="isDateDisabled" :min-value="minDate" :max-value="maxDate" @change="updateTimeOptions()" class="p-2")
+								UCalendar(v-model="modelValue" :year-controls="false" :is-date-disabled="isDateDisabled" :min-value="minDate" :max-value="maxDate" class="p-2")
 					.input-text
-						label.input-text__label(for="select-doctor") Выберите время
+						label.input-text__label(for="select-time") Выберите время
 							strong.input-text__required *
 						.select
-							select#select-doctor.input-text__input(v-model="vaccine.selectedTime" required)
+							select#select-time.input-text__input(v-model="vaccine.selectedTime" required :disabled="timeOptions.length === 0")
+								option(v-if="timeOptions.length === 0", disabled, value="") Нет доступного времени
 								option(v-for="time in timeOptions" :key="time" :value="time") {{ time }}
+								option(v-if="timeOptions.length === 0" disabled value="") Нет доступного времени
 							.select__arrow
-					//- .input-text
-					//- 	label.input-text__label(for="time") Выберите время:
-					//- 	input.input-text__input(type="time" id="time" v-model="vaccine.selectedTime")
 	.form__footer
 		.form__footer-btn
+			input.btn.btn--cancel(
+				@click="resetForm()"
+				value="Очистить",
+				type="button"
+			)
 			input.btn.btn--bg-main(
 				@click="onSubmit()"
 				value="Отправить",
@@ -360,81 +391,8 @@ onMounted(() => {
 		justify-content: space-between;
 	}
 }
-
-.vaccine-files {
-	margin-top: 16px;
-	margin-bottom: 16px;
-
-	.link {
-		font-size: 14px;
-		white-space: normal;
-
-		&:first-child { margin-bottom: 8px; }
-	}
-}
-
-.radio {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-
-	li {
-		position: relative;
-		display: block;
-		margin-bottom: 8px;
-		padding-left: 24px;
-		width: 100%;
-		height: 100%;
-		color: var(--color-modal);
-
-		input[type=radio] {
-			position: absolute;
-			visibility: hidden;
-		}
-
-		label {
-			position: relative;
-			z-index: 9;
-			display: block;
-			cursor: pointer;
-			transition: all 0.25s linear;
-		}
-
-		.check {
-			position: absolute;
-			left: -24px;
-			top: 4px;
-			z-index: 5;
-			display: block;
-			border: 2px solid var(--color-border-light);
-			border-radius: 100%;
-			width: 16px;
-			height: 16px;
-			transition: border 0.25s linear;
-
-			&::before {
-				content: "";
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				display: block;
-				margin: auto;
-				border-radius: 100%;
-				width: 8px;
-				height: 8px;
-				transform: translate(-50%, -50%);
-				transition: background 0.25s linear;
-			}
-		}
-
-		input[type=radio]:checked ~ label .check { border-color: var(--color-main); }
-
-		input[type=radio]:checked ~ label .check::before { background: var(--color-main); }
-
-		input[type=radio]:checked ~ label { color: var(--color-main); }
-	}
-
-	@media screen and (min-width: 480px) { flex-direction: row; }
+.form__footer .btn--bg-main {
+	height: 50px;
 }
 .select {
 	position: relative;
@@ -478,4 +436,5 @@ onMounted(() => {
 		.select select:disabled ~ & { border-top-color: #ccc; }
 	}
 }
+
 </style>
