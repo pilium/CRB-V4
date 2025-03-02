@@ -10,11 +10,7 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ['@/theme/ui.css', '@/theme/variables.scss', '@/theme/index.scss'],
-	modules: ['@nuxt/content', '@nuxt/image', '@nuxt/fonts', "@nuxt/scripts", "@nuxt/eslint", '@nuxt/ui', '@pinia/nuxt'],
-	image: {
-			format: ['webp', 'avif'],
-			densities: [1, 2],
-	},
+	modules: ['@nuxt/content', '@nuxt/fonts', "@nuxt/eslint", '@nuxt/ui', '@pinia/nuxt'],
 	fonts: {
 		experimental: {
 			processCSSVariables: true,
