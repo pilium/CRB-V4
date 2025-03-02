@@ -184,7 +184,9 @@ const updateTimeOptions = () => {
 			for (let minute = hour === currentHour ? currentMinute : 0; minute < 60; minute += 30) {
 				if (hour === endHour && minute >= endMinute) break;
 				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-				timeOptions.value.push(timeString);
+				if (!isTimeBooked(vaccine.value.doctor, selected, timeString)) {
+					timeOptions.value.push(timeString);
+				}
 			}
 		}
 
@@ -194,7 +196,9 @@ const updateTimeOptions = () => {
 			for (let minute = 0; minute < 60; minute += 30) {
 				if (hour === endHour && minute >= 30) break;
 				const timeString = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-				timeOptions.value.push(timeString);
+				if (!isTimeBooked(vaccine.value.doctor, selected, timeString)) {
+					timeOptions.value.push(timeString);
+				}
 			}
 		}
 	}
@@ -236,6 +240,26 @@ const resetForm = () => {
 	showToast('Форма очищена', 'Все поля формы были сброшены.', 'success');
 	isResetting = false;
 };
+const getBookedTimes = () => {
+  const existingData = localStorage.getItem('formData');
+
+  console.log(existingData);
+
+  if (existingData) {
+    return JSON.parse(existingData);
+  }
+  return [];
+};
+const isTimeBooked = (doctor, date, time) => {
+  const bookedTimes = getBookedTimes();
+  return bookedTimes.some(
+    (booking) =>
+      booking.doctor === doctor &&
+      new Date(booking.selectedDate).toDateString() === date.toDateString() &&
+      booking.selectedTime === time
+  );
+};
+
 onMounted(() => {
 	toLocalStorage = () =>  {
 
