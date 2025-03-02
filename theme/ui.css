@@ -8,6 +8,11 @@
 	--ui-text-highlighted: var(--color-title);
 	--font-display: "Exo 2", "sans-serif";
 }
+/* html[data-color="blue"],
+[data-color="inverse"] {
+	--ui-bg: #fff;
+} */
+
 .blind button {
 	font: menu;
 }

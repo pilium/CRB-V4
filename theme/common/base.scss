@@ -11,10 +11,11 @@ html {
 		--color-border: #fff;
 		--color-border-light: #fff;
 		--color-icon: #fff;
-		--color-modal: #fff;
+		--color-modal: #000;
 		--color-light: #fff;
 		--color-dark: #fff;
 		--color-hover: #fff;
+		--color-link-hover: #000;
 		--color-bg-body: #000;
 		--color-bg-secondary: #000;
 		--color-bg-icon: #000;
@@ -23,6 +24,9 @@ html {
 		--gradient-main: #000;
 		--color-text--bg: #000;
 		--color-bg-blind: #000;
+		--ui-bg: #fff;
+		--ui-text-highlighted: #000;
+		--ui-text-muted: #000;
 	}
 
 	&[data-color="contrast"] {
@@ -47,6 +51,7 @@ html {
 		--color-text--bg: #fff;
 		--gradient-main: #fff;
 		--color-bg-blind: #fff;
+		--ui-bg: #fff;
 	}
 
 	&[data-color="comfort"] {
@@ -72,6 +77,7 @@ html {
 		--color-bg-light: #e5ded6;
 		--gradient-main: #e5ded6;
 		--color-bg-blind: #e5ded6;
+		--ui-bg: #fff;
 	}
 
 	&[data-color="blue"] {
@@ -96,6 +102,7 @@ html {
 		--color-bg-light: #9dd1ff;
 		--gradient-main: #9dd1ff;
 		--color-bg-blind: #9dd1ff;
+		--ui-bg: #fff;
 	}
 
 	&[data-color="brown"] {
@@ -120,6 +127,7 @@ html {
 		--color-bg-light: #3b2716;
 		--gradient-main: #3b2716;
 		--color-bg-blind: #3b2716;
+		--ui-bg: #fff;
 	}
 
 	&[data-ls="middle"] { --letter-spacing: 2px; }
@@ -177,7 +185,6 @@ h6 {
 	margin-bottom: 0.5em;
 	padding: 0;
 	line-height: 1.4;
-	color: currentColor;
 	font-weight: bold;
 }
 

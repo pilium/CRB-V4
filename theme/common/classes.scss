@@ -175,7 +175,6 @@
 	}
 
 	&:disabled {
-		background-color: var(--color-border-light);
 		cursor: not-allowed;
 	}
 
@@ -509,26 +508,6 @@
 	}
 
 	@media screen and (min-width: var(--break_xs)) { margin-bottom: 24px; }
-}
-
-.vdp-datepicker {
-	color: var(--color-text);
-	&__calendar { width: 280px; }
-	&__input { cursor: pointer; }
-}
-
-.IZ-select__input {
-	border-radius: var(--border-radius) !important;
-	min-height: 48px;
-	color: var(--color-modal);
-	background-color: var(--color-bg-light);
-
-	&::-webkit-input-placeholder { color: var(--color-ph); }
-	&::-moz-placeholder { color: var(--color-ph); }
-	&:-moz-placeholder { color: var(--color-ph); }
-	&:-ms-input-placeholder { color: var(--color-ph); }
-
-	&:focus { border-color: var(--color--modal); }
 }
 
 .form__success {
