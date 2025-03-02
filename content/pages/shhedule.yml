@@ -74,12 +74,12 @@ data:
   - id: 4
     cabinet: 301
     days:
-      mn: "Нечёт. дни с 13:00 до 19:30 Чёт. дни с 08:00 до 14:36"
-      tu: "10:00 - 22:00"
-      wd: "10:00 - 22:00"
-      th: "10:00 - 22:00"
-      fr: "10:00 - 22:00"
-      st: "10:00 - 22:00"
+      mn: "08:00 - 12:00"
+      tu: "08:00 - 12:00"
+      wd: "08:00 - 12:00"
+      th: "Выезд на ФАП"
+      fr: "08:00 - 12:00"
+      st: "Выходной"
     position: 14
     job: "Зубной врач"
     name: "Гутовская Татьяна Геннадьевна"
@@ -88,7 +88,6 @@ data:
       to: "22.09"
     sub: false
     both: false
-    mono: true
     noService: false
     vacation: false
     updated_by:
@@ -388,7 +387,12 @@ data:
   - id: 18
     cabinet: 301
     days:
-      mn: "Нечёт. дни с 08:00 до 14:36 Чёт. дни с 13:00 до 19:30"
+      mn: "08:00 - 12:00"
+      tu: "08:00 - 12:00"
+      wd: "08:00 - 12:00"
+      th: "Выезд на ФАП"
+      fr: "08:00 - 12:00"
+      st: "Выходной"
     job: "врач-стоматолог"
     name: "Глогусь Любовь Николаевна"
     status:
@@ -398,7 +402,6 @@ data:
     position: 15
     sub: false
     both: false
-    mono: true
     noService: false
     vacation: false
     updated_by:
