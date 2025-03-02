@@ -7,7 +7,7 @@
 	--ui-bg: var(--color-light);
 	--ui-text-highlighted: var(--color-title);
 	--font-display: "Exo 2", "sans-serif";
-	--ui-text-muted: #dce2e2;
+	--ui-text-muted: #696969;
 }
 /* html[data-color="blue"],
 [data-color="inverse"] {
