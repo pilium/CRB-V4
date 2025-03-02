@@ -7,8 +7,6 @@
 					h1.article__title {{ schedules.title }}
 				template(v-slot:text)
 					.article__text
-						//- UTabs(:items="items" variant="link" class="gap-4 w-full" :ui="{ trigger: 'flex-1' }")
-						//- 	template(#account="{ item }")
 						commonTable(:tableData="tableData")
 							template(v-slot:tableData)
 								thead
