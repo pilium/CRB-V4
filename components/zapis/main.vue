@@ -1,21 +1,23 @@
 <script setup>
-import { CalendarDate, DateFormatter, getLocalTimeZone } from '@internationalized/date'
+import { CalendarDate, DateFormatter, now, getLocalTimeZone } from '@internationalized/date'
 
-const { data: schedules } = await useAsyncData(() => queryCollection('schedule') .select('data').first())
+const { data: schedules } = await useAsyncData(() => queryCollection('schedule').first())
 const uniqueArray = [...new Map(schedules.value.data.map(item => [item.name, item])).values()];
+console.log(schedules.value.data[0].days);
 
-// let today = new Date();
-// let yesterday = new Date(today);
-// yesterday.setDate(today.getDate() - 1);
-// let day = yesterday.getDate();
-// let month = yesterday.getMonth() + 1;
-// let year = yesterday.getFullYear();
+
+const toast = useToast()
 
 const df = new DateFormatter('ru-RU', {
   dateStyle: 'medium'
 })
-const modelValue = shallowRef(new CalendarDate(2025, 3, 1));
-const minDate = new CalendarDate(2025, 3, 1)
+const today = now()
+const yesterday = today.subtract({days: 1});
+const weekTwo = today.add({weeks: 2})
+
+const modelValue = shallowRef(new CalendarDate(today.year, today.month, today.day));
+const minDate = new CalendarDate(yesterday.year, yesterday.month, yesterday.day)
+const maxDate = new CalendarDate(weekTwo.year, weekTwo.month, weekTwo.day)
 
 const telRE = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
 const nameRE = /[А-Я][а-я]+\s+[А-Я][а-я]+\s+?[А-Я][а-я]?/;
@@ -59,6 +61,52 @@ const isDopValid = computed(() => {
 	return vaccine.value.doctor && vaccine.value.selectedTime && vaccine.value.selectedDate;
 })
 
+const isFormValid = computed(() => {
+	const rules = [isNameValid.value, isMailValid.value, isTelValid.value, isOmsValid.value, isDopValid.value];
+	return rules.every((item) => item);
+})
+
+function checkOMSNumber(omsNumber) {
+	const sNum = `${omsNumber}`.trim();
+
+	if (sNum.length !== 16) {
+		return false;
+	}
+
+	const arrOdd = [];
+	const arrEven = [];
+	const controlNum = parseInt(sNum.slice(-1), 10);
+
+	for (let i = sNum.length - 2; i >= 0; i -= 2) {
+		arrOdd.push(sNum[i] * 2);
+	}
+
+	for (let j = sNum.length - 3; j >= 0; j -= 2) {
+		arrEven.push(sNum[j] * 1);
+	}
+
+	const arr2 = arrEven.join('') + arrOdd.join('');
+	const arrSum = parseInt(Array.from(`${arr2}`).reduce((acc, item) => acc + parseInt(item, 10), 0), 10);
+
+	let lastNumber = `${arrSum}`.slice(-1);
+
+	lastNumber = +lastNumber;
+	const controlNumResult = lastNumber === 0 ? lastNumber : 10 - lastNumber;
+
+	return controlNum === controlNumResult;
+}
+
+
+let toLocalStorage = null;
+
+function showToast(title, description, type) {
+toast.add({
+	title: title,
+	description: description,
+	color: type
+})
+}
+
 const updateTimeOptions = () => {
 	const now = new Date();
 	const selected = new Date(vaccine.value.selectedDate);
@@ -95,54 +143,10 @@ const updateTimeOptions = () => {
 	}
 }
 }
-const isFormValid = computed(() => {
-	const rules = [isNameValid.value, isMailValid.value, isTelValid.value, isOmsValid.value, isDopValid.value];
-	return rules.every((item) => item);
-})
+watch(() => vaccine.value.selectedDate, updateTimeOptions);
 
-function checkOMSNumber(omsNumber) {
-	const sNum = `${omsNumber}`.trim();
-
-	if (sNum.length !== 16) {
-		return false;
-	}
-
-	const arrOdd = [];
-	const arrEven = [];
-	const controlNum = parseInt(sNum.slice(-1), 10);
-
-	for (let i = sNum.length - 2; i >= 0; i -= 2) {
-		arrOdd.push(sNum[i] * 2);
-	}
-
-	for (let j = sNum.length - 3; j >= 0; j -= 2) {
-		arrEven.push(sNum[j] * 1);
-	}
-
-	const arr2 = arrEven.join('') + arrOdd.join('');
-	const arrSum = parseInt(Array.from(`${arr2}`).reduce((acc, item) => acc + parseInt(item, 10), 0), 10);
-
-	let lastNumber = `${arrSum}`.slice(-1);
-
-	lastNumber = +lastNumber;
-	const controlNumResult = lastNumber === 0 ? lastNumber : 10 - lastNumber;
-
-	return controlNum === controlNumResult;
-}
-
-let toLocalStorage = null;
-
-function showToast(title, description, type) {
-toast.add({
-	title: title,
-	description: description,
-	color: type
-})
-}
-const toast = useToast()
 function onSubmit() {
 	if (isFormValid.value) {
-		console.log(vaccine.value);
 		const OK = toLocalStorage()
 		if(OK) {
 			showToast('Запись успешна', 'Данные о записи успешно приняты', 'sucsess')
@@ -164,11 +168,9 @@ onMounted(() => {
 			const existingDataArray = JSON.parse(existingData);
        		const isDuplicate = existingDataArray.some(item => JSON.stringify(item) === formDataString);
 			if (isDuplicate) {
-				// Если данные полностью совпадают, выдаем предупреждение
 				showToast('Ошибка при сохранении', 'Вы уже записаны к этому врачу на указанную дату', 'error')
 				return false
 			} else {
-				// Если данные не совпадают, добавляем новые данные к существующим
 				existingDataArray.push(formData);
 				localStorage.setItem('formData', JSON.stringify(existingDataArray));
 				return true
@@ -270,7 +272,7 @@ onMounted(() => {
 						UPopover
 							UButton#select-date(color="neutral" variant="subtle" icon="i-lucide-calendar") {{ modelValue ? df.format(modelValue.toDate(getLocalTimeZone())) : 'Выберите дату' }}
 							template(#content)
-								UCalendar(v-model="modelValue" :min-value="minDate" class="p-2")
+								UCalendar(v-model="modelValue" :min-value="minDate" :max-value="maxDate"  class="p-2")
 					.input-text
 						label.input-text__label(for="select-doctor") Выберите время
 							strong.input-text__required *
