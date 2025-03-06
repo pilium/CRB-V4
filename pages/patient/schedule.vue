@@ -77,16 +77,6 @@
 <script setup>
 const { data: schedules } = await useAsyncData(() => queryCollection('schedule').first())
 
-const items = [
-  {
-    label: 'ст.Романовская',
-    slot: 'account'
-  },
-  {
-    label: 'х. Рябичев',
-    slot: 'password'
-  }
-]
 
 const days = []
 const weekData = ref([]);
