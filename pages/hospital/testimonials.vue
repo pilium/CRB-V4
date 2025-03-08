@@ -27,10 +27,6 @@ const { data } = await useAsyncData('reviews', () => queryCollection('reviews').
 	date: item.meta.date
 }))
 })
-// const { data } = await useAsyncData('reviews', () => DB.listDocuments(config.public.API_BASE_ID, config.public.DB_TESTIMONIALS) )
-
-console.log(data);
-
 
 function timeNormalize(value) {
 	if (!value) {
