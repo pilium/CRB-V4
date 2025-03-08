@@ -17,7 +17,7 @@ export default defineNuxtConfig({
 		},
 	},
 	icon: {
-		mode: 'svg', // default <Icon> mode applied
+		mode: 'svg',
 		customCollections: [
 			{
 					prefix: 'my-icon',
