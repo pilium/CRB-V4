@@ -23,8 +23,8 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.2.0",
-    "eslint": "^9.22.0",
+    "@nuxt/eslint": "^1.1.0",
+    "eslint": "^9.21.0",
     "postcss-scss": "^4.0.9",
     "pug": "^3.0.3"
   }

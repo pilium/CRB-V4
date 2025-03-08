@@ -15,7 +15,7 @@ Gosuslugi:
 links:
   - icon: calendar
     title: График приема
-    descr: станица Романовская, хутор Рябичев
+    descr: станица Романовская
     to: /patient/schedule
   - icon: doctor
     title: Услуги
