@@ -24,28 +24,6 @@ data:
     updated_by:
       $oid: "5e1c0b2df7d9d30084bda291"
 
-  - id: 2
-    cabinet: 307
-    days:
-      mn: "14:00 - 17:00"
-      tu: "нет приема"
-      wd: "нет приема"
-      th: "нет приема"
-      fr: "нет приема"
-      st: "Выходной"
-    position: 19
-    job: "врач-хирург детский"
-    name: "Туфанов Камол Ниязович"
-    status:
-      from: "29.07"
-      to: "13.08"
-    sub: false
-    both: true
-    vacation: false
-    noService: false
-    updated_by:
-      $oid: "5e1c0b2df7d9d30084bda291"
-
   - id: 3
     sub: false
     both: false
@@ -115,27 +93,6 @@ data:
     job: "врач-педиатр участковый"
     created_by:
       $oid: "5e1c0b2df7d9d30084bda291"
-    updated_by:
-      $oid: "5e1c0b2df7d9d30084bda291"
-
-  - id: 6
-    days:
-      mn: "13:00 - 15:00"
-      tu: "13:00 - 15:00"
-      wd: "13:00 - 15:00"
-      th: "13:00 - 15:00"
-      fr: "13:00 - 15:00"
-      st: "Выходной"
-    position: 26
-    status:
-      from: "09.09"
-      to: "22.09"
-    cabinet: 216
-    job: "врач УЗИ"
-    name: "Власова Юлия Сергеевна"
-    both: true
-    vacation: false
-    noService: false
     updated_by:
       $oid: "5e1c0b2df7d9d30084bda291"
 
