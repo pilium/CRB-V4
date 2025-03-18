@@ -1,9 +1,10 @@
 <template>
-	<UApp>
+	<UApp :locale="ru">
 		<NuxtLayout/>
 	</UApp>
 </template>
 <script setup lang="ts">
+import { ru } from '@nuxt/ui/locale';
 
 useHead({
 	meta: [
