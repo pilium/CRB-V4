@@ -30,7 +30,7 @@
 												td.attention(colspan="6") Отпуск c {{ item.status.from }} по {{ item.status.to }}
 											template(v-else)
 												template(v-for="(item) in item.days")
-													template(v-if="item === 'нет приема' || item === 'Выходной' || item === 'По графику'")
+													template(v-if="item === 'нет приема' || item === 'Выходной' || item === 'Выезд на ФАП'" )
 														td.attention {{ item }}
 													template(v-else)
 														td {{ item }}

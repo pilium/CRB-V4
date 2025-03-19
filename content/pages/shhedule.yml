@@ -264,7 +264,7 @@ data:
     days:
       mn: "08:00 - 12:00"
       tu: "08:00 - 12:00"
-      wd: "08:00 - 12:00"
+      wd: "Выезд на ФАП"
       th: "08:00 - 12:00"
       fr: "08:00 - 12:00"
       st: "Выходной"
@@ -364,25 +364,6 @@ data:
     updated_by:
       $oid: "5e1c0b2df7d9d30084bda291"
 
-  - id: 19
-    cabinet: 113
-    days:
-      mn: "08:00 - 12:00"
-      tu: "08:00 - 12:00"
-      wd: "нет приема"
-      th: "08:00 - 12:00"
-      fr: "08:00 - 12:00"
-      st: "Выходной"
-    position: 1
-    job: "врач-терапевт участковый"
-    name: "Казимов Аскар Казимович"
-    status: {}
-    sub: true
-    both: false
-    updated_by:
-      $oid: "5e1c0b2df7d9d30084bda291"
-    vacation: false
-
   - id: 20
     status:
       from: "10.09"
@@ -450,27 +431,6 @@ data:
     updated_by:
       $oid: "5e1c0b2df7d9d30084bda291"
     noService: false
-
-  - id: 23
-    cabinet: 126
-    days:
-      mn: "08:00 - 12:00"
-      tu: "08:00 - 12:00"
-      wd: "нет приема"
-      th: "08:00 - 12:00"
-      fr: "08:00 - 12:00"
-      st: "Выходной"
-    position: 1
-    job: "врач-педиатр участковый"
-    name: "Караваева Эльвира Викторовна"
-    status:
-      from: "19.09"
-      to: "16.10"
-    sub: true
-    both: false
-    vacation: false
-    updated_by:
-      $oid: "5e1c0b2df7d9d30084bda291"
 
   - id: 24
     sub: false
@@ -580,7 +540,7 @@ data:
       tu: "08:00 - 14:00"
       wd: "08:00 - 14:00"
       th: "08:00 - 14:00"
-      fr: "08:00 - 14:00"
+      fr: "Выезд на ФАП"
       st: "Выходной"
     cabinet: 310
     vacation: false

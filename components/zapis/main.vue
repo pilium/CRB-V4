@@ -102,7 +102,7 @@ const updateTimeOptions = () => {
 	}
 
 	const dayS = selectedDoctor.days[dayOfWeek];
-	if (dayS === "нет приема" || dayS === "Выходной") {
+	if (dayS === "нет приема" || dayS === "Выходной" || dayS === "Выезд на ФАП") {
 		timeOptions.value = [];
 		zapis.value.selectedTime = '';
 		showToast('Нет приема','У этого врача нет приема в выбранный день', 'error' )
