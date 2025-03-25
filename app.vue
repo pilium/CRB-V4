@@ -1,5 +1,6 @@
 <template>
 	<UApp :locale="ru">
+		<NuxtPwaManifest />
 		<NuxtLayout/>
 	</UApp>
 </template>
