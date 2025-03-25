@@ -11,19 +11,19 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/content": "^3.3.0",
+    "@nuxt/content": "^3.4.0",
     "@nuxt/fonts": "^0.11.0",
     "@nuxt/icon": "^1.11.0",
-    "@nuxt/ui": "^3.0.0",
+    "@nuxt/ui": "^3.0.1",
     "@pinia/nuxt": "^0.10.1",
-    "nuxt": "^3.16.0",
+    "nuxt": "^3.16.1",
     "pinia": "^3.0.1",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.2.0",
-    "eslint": "^9.22.0",
+    "eslint": "^9.23.0",
     "postcss-scss": "^4.0.9",
     "pug": "^3.0.3"
   }
